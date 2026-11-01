@@ -44,7 +44,7 @@ Next.js 15 App Router, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Len
 
 ## Local development
 
-Use a Node.js version compatible with the installed Next.js package (`^18.18.0 || ^19.8.0 || >=20.0.0`) and npm. `package-lock.json` records the dependency versions.
+Use **Node.js 24.x** and npm. `.nvmrc` selects Node 24, `package.json` declares the same runtime for Vercel, and `package-lock.json` records the dependency versions. With nvm installed, run `nvm use` before installing dependencies.
 
 ```sh
 npm ci
@@ -56,8 +56,9 @@ Open [http://127.0.0.1:3107](http://127.0.0.1:3107). `npm run dev` without flags
 ## Validation and production build
 
 ```sh
-# Type checking
-npx tsc --noEmit
+# Lint and type checking
+npm run lint
+npm run typecheck
 
 # SEO checks against a running local server
 npm run check:seo -- http://127.0.0.1:3107
@@ -69,9 +70,41 @@ npm run build
 npm start
 ```
 
-The SEO check verifies route responses, distinct titles and descriptions, canonical URLs, Open Graph and Twitter previews, social image availability, one primary heading per public page, structured data, A/L and O/L content, preserved reviews, removal of student results, sitemap and authentication noindex rules. The build enforces TypeScript checks; ESLint is currently skipped by `next.config.ts`.
+The SEO check verifies route responses, distinct titles and descriptions, canonical URLs, Open Graph and Twitter previews, social image availability, one primary heading per public page, structured data, A/L and O/L content, preserved reviews, removal of student results, sitemap and authentication noindex rules. Lint uses the ESLint CLI with a zero-warning threshold. The build enforces ESLint and TypeScript checks. Native image elements are allowed because the site explicitly supplies responsive AVIF/WebP sources and matching preloads.
 
 Avoid running a production build against the same `.next` directory as an active development server. Use a separate checkout or build copy if the preview needs to stay available.
+
+## Git and Vercel configuration
+
+The current repository is `sayuru-akash/ict-with-sayuru`, on branch `main`. The project folder was renamed from `ict-sayuru` to `ict-with-sayuru`.
+
+`.gitignore` excludes dependencies, Next.js output, generated TypeScript caches, local environment files, Vercel connection state and operating system files. Keep `.env.example` tracked. Never add `.env.local` or `.vercel/project.json` to a commit.
+
+For a manual Vercel import, use:
+
+| Setting | Value |
+| --- | --- |
+| Repository | `sayuru-akash/ict-with-sayuru` |
+| Production branch | `main` |
+| Framework preset | Next.js |
+| Root directory | Repository root (`./`) |
+| Node.js version | `24.x` |
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Output directory | Next.js default, no override |
+| Public domain | `ict.sayuru.me` |
+
+No environment variables are required to build the current landing website. The production domain defaults to `https://ict.sayuru.me`. Keep `NEXT_PUBLIC_API_URL` unset until an owned backend and the required portal screens are available. Search verification tokens are optional.
+
+Push the reviewed local commit to GitHub before importing, so Vercel receives the checked version. This preparation does not connect a Vercel account, create a Vercel project, or deploy the site.
+
+The PostCSS dependency used by Next.js is pinned through an npm override to `8.5.32` to address the dependency audit findings while retaining Next.js 15.5.28. Keep the override until an upstream Next.js version includes a patched compatible release. The Next.js 15-compatible ESLint toolchain has development-only moderate minimatch advisories; they are not in the production dependency graph. Avoid linting untrusted repositories or attacker-controlled glob patterns. Full dependency audit results must be distinguished from `npm audit --omit=dev`.
+
+## Commit verification, 1 November 2026
+
+A fresh `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build` passed on Node 24.15.0. `npm run check:seo` passed against the resulting production server for the homepage, both policy pages, social image, structured data, sitemap, robots and authentication noindex behavior. The production dependency audit (`npm audit --omit=dev`) reported zero vulnerabilities. The full audit reported 14 moderate development-tool findings through minimatch in the Next.js 15-compatible lint toolchain; these remain a documented limitation rather than a clean full-audit claim.
+
+The earlier Lighthouse figures below are historical measurements from 27 October, not a new audit for this commit. Production deployment, DNS, third-party account setup and live Vercel behavior remain unverified until you connect and deploy the repository.
 
 ## Local verification, 27 October 2026
 
