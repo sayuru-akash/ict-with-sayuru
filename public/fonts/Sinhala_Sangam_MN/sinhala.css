@@ -1,0 +1,29 @@
+/* Kept as a standalone stylesheet (not part of the Tailwind bundle that
+   src/index.css compiles into) so it can be loaded with the same
+   media=print/onload async-swap trick as the Google Fonts link in
+   index.html, instead of going out with the fully-inlined critical CSS
+   prerender.js embeds in <head>. Lighthouse's Lantern model assigns any
+   font that matches already-parsed DOM text "VeryHigh" fetch priority and
+   folds it into the critical request chain the instant it's discoverable —
+   this holds regardless of font-display, so being reachable from the
+   inlined <style> tag on first paint was enough by itself to drag out
+   simulated FCP/LCP. Deferring discovery until after the async stylesheet
+   loads keeps these two font files off the critical path entirely. See
+   src/index.css's former copy of this comment for the subsetting/
+   font-display rationale (glyph coverage, AAT table removal, etc). */
+@font-face {
+	font-family: "Sinhala Sangam MN";
+	src: url("/fonts/Sinhala_Sangam_MN/SinhalaSangamMN-Regular.woff2")
+		format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: optional;
+}
+@font-face {
+	font-family: "Sinhala Sangam MN";
+	src: url("/fonts/Sinhala_Sangam_MN/SinhalaSangamMN-Bold.woff2")
+		format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: optional;
+}

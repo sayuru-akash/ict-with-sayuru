@@ -1,0 +1,656 @@
+{
+  "exam": "A/L 2025 — Top 100",
+  "students": [
+    {
+      "rank": 1,
+      "name": "RIVIN VINSARA",
+      "index": "8274**",
+      "gender": "male",
+      "icon": 1
+    },
+    {
+      "rank": 2,
+      "name": "Vihangi Kawyz",
+      "index": "61107**",
+      "gender": "female",
+      "icon": 6
+    },
+    {
+      "rank": 3,
+      "name": "Kavindu Sankalpa",
+      "index": "78808**",
+      "gender": "male",
+      "icon": 6
+    },
+    {
+      "rank": 3,
+      "name": "Eshan Misharaka",
+      "index": "74129**",
+      "gender": "male",
+      "icon": 2
+    },
+    {
+      "rank": 6,
+      "name": "LASEYA MUNASINGHE",
+      "index": "82777**",
+      "gender": "female",
+      "icon": 9
+    },
+    {
+      "rank": 7,
+      "name": "KUMARI HERATH",
+      "index": "65311**",
+      "gender": "female",
+      "icon": 7
+    },
+    {
+      "rank": 9,
+      "name": "DINITHI ANUTHTHARA",
+      "index": "53595**",
+      "gender": "female",
+      "icon": 1
+    },
+    {
+      "rank": 11,
+      "name": "VIDANA ARACHCHI",
+      "index": "51589**",
+      "gender": "male",
+      "icon": 8
+    },
+    {
+      "rank": 12,
+      "name": "SANJANA THARUKA",
+      "index": "74130**",
+      "gender": "female",
+      "icon": 8
+    },
+    {
+      "rank": 13,
+      "name": "SATHMINA RAJAPAKSHA",
+      "index": "70658**",
+      "gender": "female",
+      "icon": 2
+    },
+    {
+      "rank": 14,
+      "name": "CHAMIKARA PERERA",
+      "index": "67740**",
+      "gender": "male",
+      "icon": 9
+    },
+    {
+      "rank": 14,
+      "name": "DILSHAN MADHUSHANKA",
+      "index": "70379**",
+      "gender": "male",
+      "icon": 10
+    },
+    {
+      "rank": 15,
+      "name": "CHATHUMAL SENADEERA",
+      "index": "82633**",
+      "gender": "male",
+      "icon": 3
+    },
+    {
+      "rank": 15,
+      "name": "CHATHURANGANI RAJAMUNI",
+      "index": "64821**",
+      "gender": "female",
+      "icon": 12
+    },
+    {
+      "rank": 15,
+      "name": "SANJULA AMARARATHNA",
+      "index": "69376**",
+      "gender": "male",
+      "icon": 12
+    },
+    {
+      "rank": 18,
+      "name": "POOJAN DASANAYAKE",
+      "index": "50767**",
+      "gender": "male",
+      "icon": 4
+    },
+    {
+      "rank": 18,
+      "name": "KAVINDI MALSHA",
+      "index": "70693**",
+      "gender": "female",
+      "icon": 13
+    },
+    {
+      "rank": 19,
+      "name": "JANITH COLOMBAGE",
+      "index": "82316**",
+      "gender": "male",
+      "icon": 13
+    },
+    {
+      "rank": 20,
+      "name": "TAKSILA RAJAPAKSHA",
+      "index": "58965**",
+      "gender": "female",
+      "icon": 3
+    },
+    {
+      "rank": 21,
+      "name": "Sahas Chamidu",
+      "index": "82629**",
+      "gender": "male",
+      "icon": 5
+    },
+    {
+      "rank": 21,
+      "name": "KAVISHKA SAVINDUHAN",
+      "index": "70695**",
+      "gender": "male",
+      "icon": 7
+    },
+    {
+      "rank": 22,
+      "name": "VIRAJ LAKSHITHA",
+      "index": "62331**",
+      "gender": "male",
+      "icon": 14
+    },
+    {
+      "rank": 24,
+      "name": "Sharani Pabasara",
+      "index": "76663**",
+      "gender": "female",
+      "icon": 21
+    },
+    {
+      "rank": 25,
+      "name": "NETHSALANI PREMACHANDRA",
+      "index": "73448**",
+      "gender": "female",
+      "icon": 10
+    },
+    {
+      "rank": 27,
+      "name": "NIMESHIKA GAMAGE",
+      "index": "82479**",
+      "gender": "female",
+      "icon": 22
+    },
+    {
+      "rank": 29,
+      "name": "CHATHURANGA WEERASEKARA",
+      "index": "56865**",
+      "gender": "male",
+      "icon": 7
+    },
+    {
+      "rank": 31,
+      "name": "Deneth Suraweera",
+      "index": "64321**",
+      "gender": "male",
+      "icon": 11
+    },
+    {
+      "rank": 34,
+      "name": "Tamasha Hirushani",
+      "index": "60910**",
+      "gender": "female",
+      "icon": 15
+    },
+    {
+      "rank": 34,
+      "name": "MANIKE HERATH",
+      "index": "67735**",
+      "gender": "female",
+      "icon": 23
+    },
+    {
+      "rank": 36,
+      "name": "CHAMORD AMARASINGHE",
+      "index": "63809**",
+      "gender": "male",
+      "icon": 16
+    },
+    {
+      "rank": 37,
+      "name": "SADEEPA SEWMINI",
+      "index": "69155**",
+      "gender": "female",
+      "icon": 24
+    },
+    {
+      "rank": 37,
+      "name": "Damith Weerasinghe",
+      "index": "54672**",
+      "gender": "male",
+      "icon": 11
+    },
+    {
+      "rank": 37,
+      "name": "Inura Lakshan",
+      "index": "57418**",
+      "gender": "male",
+      "icon": 15
+    },
+    {
+      "rank": 38,
+      "name": "KASUN JAYASINGHA",
+      "index": "68801**",
+      "gender": "male",
+      "icon": 17
+    },
+    {
+      "rank": 38,
+      "name": "NETHMINI DILHARI",
+      "index": "56116**",
+      "gender": "female",
+      "icon": 6
+    },
+    {
+      "rank": 41,
+      "name": "HIRUSHA KAVINDA",
+      "index": "81681**",
+      "gender": "male",
+      "icon": 19
+    },
+    {
+      "rank": 42,
+      "name": "Rumash Fernanado",
+      "index": "81490**",
+      "gender": "male",
+      "icon": 17
+    },
+    {
+      "rank": 42,
+      "name": "MADHUBHASHANA ADHIKARI",
+      "index": "59365**",
+      "gender": "male",
+      "icon": 15
+    },
+    {
+      "rank": 43,
+      "name": "Miyuru Nishanada",
+      "index": "54431**",
+      "gender": "male",
+      "icon": 20
+    },
+    {
+      "rank": 44,
+      "name": "wisitha Rasanjana",
+      "index": "61728**",
+      "gender": "male",
+      "icon": 20
+    },
+    {
+      "rank": 44,
+      "name": "Yomal Senanayake",
+      "index": "79436**",
+      "gender": "male",
+      "icon": 22
+    },
+    {
+      "rank": 45,
+      "name": "EMASHA TASHINI",
+      "index": "82918**",
+      "gender": "female",
+      "icon": 11
+    },
+    {
+      "rank": 47,
+      "name": "Sachintha Kavishan",
+      "index": "63677**",
+      "gender": "male",
+      "icon": 21
+    },
+    {
+      "rank": 48,
+      "name": "BANDARA WIJERATHNA",
+      "index": "65314**",
+      "gender": "male",
+      "icon": 22
+    },
+    {
+      "rank": 50,
+      "name": "Sathsarani Jayasekara",
+      "index": "52374**",
+      "gender": "female",
+      "icon": 9
+    },
+    {
+      "rank": 51,
+      "name": "Abheetha Sathsara",
+      "index": "55789**",
+      "gender": "male",
+      "icon": 23
+    },
+    {
+      "rank": 52,
+      "name": "DILSHAN SENAVIRATHNA",
+      "index": "56872**",
+      "gender": "male",
+      "icon": 23
+    },
+    {
+      "rank": 53,
+      "name": "METHSARA GUNASEKARA",
+      "index": "65996**",
+      "gender": "male",
+      "icon": 21
+    },
+    {
+      "rank": 53,
+      "name": "Piyumi Wickramasingha",
+      "index": "67821**",
+      "gender": "female",
+      "icon": 19
+    },
+    {
+      "rank": 54,
+      "name": "Dumidu Lasantha",
+      "index": "78800**",
+      "gender": "male",
+      "icon": 24
+    },
+    {
+      "rank": 55,
+      "name": "KUMARI BANDARA",
+      "index": "66948**",
+      "gender": "female",
+      "icon": 7
+    },
+    {
+      "rank": 56,
+      "name": "SANDEEPA EDIRISINGHE",
+      "index": "64863**",
+      "gender": "male",
+      "icon": 1
+    },
+    {
+      "rank": 57,
+      "name": "Malika Nishantha",
+      "index": "70146**",
+      "gender": "female",
+      "icon": 12
+    },
+    {
+      "rank": 58,
+      "name": "MIHIRANGA AMARASINGHA",
+      "index": "54840**",
+      "gender": "male",
+      "icon": 6
+    },
+    {
+      "rank": 58,
+      "name": "akila chamika",
+      "index": "64076**",
+      "gender": "male",
+      "icon": 24
+    },
+    {
+      "rank": 59,
+      "name": "Kaveesha Prabavith",
+      "index": "57432**",
+      "gender": "male",
+      "icon": 8
+    },
+    {
+      "rank": 60,
+      "name": "Shenuli Vihanga",
+      "index": "68756**",
+      "gender": "female",
+      "icon": 1
+    },
+    {
+      "rank": 60,
+      "name": "Savindu Dilshan",
+      "index": "55792**",
+      "gender": "male",
+      "icon": 2
+    },
+    {
+      "rank": 61,
+      "name": "Mayura Prabath",
+      "index": "69195**",
+      "gender": "male",
+      "icon": 6
+    },
+    {
+      "rank": 62,
+      "name": "Thehara Amarathunga",
+      "index": "54921**",
+      "gender": "female",
+      "icon": 14
+    },
+    {
+      "rank": 63,
+      "name": "Sajana Sathsaranee",
+      "index": "73448**",
+      "gender": "female",
+      "icon": 13
+    },
+    {
+      "rank": 65,
+      "name": "Janith Nimsara",
+      "index": "64321**",
+      "gender": "male",
+      "icon": 9
+    },
+    {
+      "rank": 66,
+      "name": "chamindu hirushan",
+      "index": "82317**",
+      "gender": "male",
+      "icon": 1
+    },
+    {
+      "rank": 67,
+      "name": "Chamodh Vishwajith",
+      "index": "77144**",
+      "gender": "male",
+      "icon": 3
+    },
+    {
+      "rank": 68,
+      "name": "Samodya Isuranga",
+      "index": "83719**",
+      "gender": "male",
+      "icon": 8
+    },
+    {
+      "rank": 68,
+      "name": "Nirmal Hasaranga",
+      "index": "81993**",
+      "gender": "male",
+      "icon": 10
+    },
+    {
+      "rank": 70,
+      "name": "Anuhas Pahasara",
+      "index": "70977**",
+      "gender": "male",
+      "icon": 10
+    },
+    {
+      "rank": 71,
+      "name": "Ruchira Kavishka",
+      "index": "61258**",
+      "gender": "male",
+      "icon": 14
+    },
+    {
+      "rank": 74,
+      "name": "Oshadhi Kaveesha",
+      "index": "63499**",
+      "gender": "female",
+      "icon": 2
+    },
+    {
+      "rank": 75,
+      "name": "Chiraj Dias",
+      "index": "51382**",
+      "gender": "male",
+      "icon": 4
+    },
+    {
+      "rank": 75,
+      "name": "Sashini Upeksha",
+      "index": "82455**",
+      "gender": "female",
+      "icon": 15
+    },
+    {
+      "rank": 76,
+      "name": "NIMSARA WIJESINGHA",
+      "index": "53512**",
+      "gender": "male",
+      "icon": 12
+    },
+    {
+      "rank": 76,
+      "name": "Nuwansa Pabodi",
+      "index": "82740**",
+      "gender": "female",
+      "icon": 8
+    },
+    {
+      "rank": 78,
+      "name": "KAUSHALYA KUMARI",
+      "index": "68482**",
+      "gender": "female",
+      "icon": 16
+    },
+    {
+      "rank": 79,
+      "name": "SADARUWAN DEWAPRIYA",
+      "index": "70413**",
+      "gender": "male",
+      "icon": 2
+    },
+    {
+      "rank": 80,
+      "name": "Akarsha Diwyanjali",
+      "index": "78802**",
+      "gender": "female",
+      "icon": 4
+    },
+    {
+      "rank": 83,
+      "name": "Dumindu Dilshan",
+      "index": "82910**",
+      "gender": "male",
+      "icon": 9
+    },
+    {
+      "rank": 83,
+      "name": "Chamodi Heelbathdeniya",
+      "index": "57291**",
+      "gender": "female",
+      "icon": 17
+    },
+    {
+      "rank": 83,
+      "name": "W.G.Biguneththi Jayathri",
+      "index": "54617**",
+      "gender": "female",
+      "icon": 10
+    },
+    {
+      "rank": 85,
+      "name": "Lochana Sayuranga",
+      "index": "54672**",
+      "gender": "male",
+      "icon": 16
+    },
+    {
+      "rank": 86,
+      "name": "Chathunika Maduwanthi",
+      "index": "71252**",
+      "gender": "female",
+      "icon": 3
+    },
+    {
+      "rank": 87,
+      "name": "Vihini Senulya",
+      "index": "57035**",
+      "gender": "female",
+      "icon": 5
+    },
+    {
+      "rank": 87,
+      "name": "Kusal Avishka",
+      "index": "76577**",
+      "gender": "male",
+      "icon": 14
+    },
+    {
+      "rank": 88,
+      "name": "SAMMANI SOMARATHNA",
+      "index": "63772**",
+      "gender": "female",
+      "icon": 20
+    },
+    {
+      "rank": 90,
+      "name": "thisara dilshan",
+      "index": "50863**",
+      "gender": "male",
+      "icon": 12
+    },
+    {
+      "rank": 91,
+      "name": "Nadeesha Dhiloshana",
+      "index": "67825**",
+      "gender": "female",
+      "icon": 18
+    },
+    {
+      "rank": 91,
+      "name": "Thisun Dinujaya",
+      "index": "50751**",
+      "gender": "male",
+      "icon": 3
+    },
+    {
+      "rank": 95,
+      "name": "Kaveesha Jayaranga",
+      "index": "82658**",
+      "gender": "male",
+      "icon": 5
+    },
+    {
+      "rank": 95,
+      "name": "Sadeepa Anuhas",
+      "index": "62151**",
+      "gender": "male",
+      "icon": 16
+    },
+    {
+      "rank": 96,
+      "name": "Madusara Chamika",
+      "index": "50769**",
+      "gender": "male",
+      "icon": 13
+    },
+    {
+      "rank": 96,
+      "name": "RANDEEPA DISSANAYAKA",
+      "index": "68176**",
+      "gender": "male",
+      "icon": 13
+    },
+    {
+      "rank": 97,
+      "name": "Vihaga Sulochana",
+      "index": "57432**",
+      "gender": "male",
+      "icon": 19
+    },
+    {
+      "rank": 98,
+      "name": "VISHWAJITH BASNAYAKA",
+      "index": "70054**",
+      "gender": "male",
+      "icon": 4
+    }
+  ]
+}

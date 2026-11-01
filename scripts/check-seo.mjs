@@ -1,0 +1,65 @@
+import assert from "node:assert/strict";
+
+const base = (process.argv[2] || "http://127.0.0.1:3000").replace(/\/+$/, "");
+const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ict.sayuru.me").replace(/\/+$/, "");
+const routes = ["/", "/privacy-policy", "/refund-policy"];
+const decode = value => value.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"');
+const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, decode(value)]));
+const titles = new Set();
+const descriptions = new Set();
+
+for (const route of routes) {
+  const response = await fetch(`${base}${route}`, { headers: { "User-Agent": "Googlebot" } });
+  assert.equal(response.status, 200, `${route} must return HTTP 200`);
+  const html = await response.text();
+  const head = html.match(/<head>(.*?)<\/head>/s)?.[1] || "";
+  assert.equal([...head.matchAll(/<title>/g)].length, 1, `${route}: requires one document title`);
+  const title = decode(head.match(/<title>(.*?)<\/title>/s)?.[1] || "");
+  assert(title.includes("Sayuru Amarasinghe"), `${route}: brand missing from title`);
+  assert(!titles.has(title), `${route}: duplicate title`);
+  titles.add(title);
+  const metaTags = [...head.matchAll(/<meta\s[^>]*>/g)].map(([tag]) => attributes(tag));
+  const meta = key => metaTags.filter(tag => tag.name === key || tag.property === key);
+  assert.equal(meta("description").length, 1, `${route}: requires one description`);
+  const description = meta("description")[0].content;
+  assert(description.length > 50 && !descriptions.has(description), `${route}: description must be useful and unique`);
+  descriptions.add(description);
+  const links = [...head.matchAll(/<link\s[^>]*>/g)].map(([tag]) => attributes(tag));
+  const canonicals = links.filter(tag => tag.rel === "canonical");
+  assert.equal(canonicals.length, 1, `${route}: requires one canonical`);
+  assert.equal(new URL(canonicals[0].href).href, new URL(`${origin}${route}`).href);
+  assert.equal(new URL(meta("og:url")[0]?.content).href, new URL(`${origin}${route}`).href);
+  assert.equal(meta("og:title")[0]?.content, title);
+  assert.equal(meta("twitter:title")[0]?.content, title);
+  const imageUrl = meta("og:image")[0]?.content;
+  assert(imageUrl?.startsWith(origin), `${route}: absolute social image required`);
+  assert.equal((await fetch(`${base}${new URL(imageUrl).pathname}`)).status, 200);
+  assert(!meta("robots").some(tag => /noindex/.test(tag.content)), `${route}: public page must be indexable`);
+  assert.equal([...html.matchAll(/<h1(?:\s|>)/g)].length, 1, `${route}: requires one h1`);
+  assert(!/pasindu|athukorala|94781262001/i.test(html), `${route}: obsolete identity found`);
+  const objects = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(([, json]) => JSON.parse(json));
+  const nodes = objects.flatMap(value => value["@graph"] || [value]);
+  assert(nodes.some(node => node["@type"] === "Person" && node.name === "Sayuru Amarasinghe"));
+  assert(!nodes.some(node => ["Review", "AggregateRating", "FAQPage"].includes(node["@type"])), `${route}: unexpected review, rating, or retired FAQ rich-result markup`);
+  const courses = nodes.filter(node => node["@type"] === "Course");
+  if (route === "/") {
+    assert.equal(courses.length, 2, "Homepage must describe A/L and O/L courses");
+    for (const id of ["al-ict", "ol-ict", "programmes", "testimonials"]) assert(html.includes(`id="${id}"`), `Missing visible ${id} section`);
+    assert(courses.some(course => course.educationalLevel.includes("Ordinary")));
+    assert(!html.includes('id="results"') && !html.includes('href="#results"'), "Removed results section must stay absent");
+  } else {
+    assert.equal(courses.length, 0, `${route}: course markup belongs on the homepage`);
+    assert(nodes.some(node => node["@type"] === "WebPage" && node.breadcrumb?.itemListElement?.length === 2));
+  }
+  console.log(`PASS ${route}: title, description, canonical, social previews, headings, identity and structured data`);
+}
+
+const auth = await (await fetch(`${base}/auth/callback`, { headers: { "User-Agent": "Googlebot" } })).text();
+assert([...auth.matchAll(/<meta\s[^>]*>/g)].map(([tag]) => attributes(tag)).some(tag => tag.name === "robots" && /noindex/.test(tag.content)), "Auth callback must have noindex");
+const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
+for (const route of routes) assert(sitemap.includes(`<loc>${origin}${route}</loc>`));
+assert(!sitemap.includes("/auth/"));
+const robots = await (await fetch(`${base}/robots.txt`)).text();
+assert(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
+assert(!robots.includes("Disallow: /auth"), "Crawlers must be able to read auth noindex");
+console.log("PASS sitemap, robots and authentication indexing rules");

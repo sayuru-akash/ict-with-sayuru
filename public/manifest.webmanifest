@@ -1,0 +1,73 @@
+{
+  "id": "/",
+  "name": "Sayuru Amarasinghe - A/L & O/L ICT",
+  "short_name": "Sayuru ICT",
+  "description": "Online A/L and O/L ICT classes with Sayuru Amarasinghe in Sri Lanka. Explore programmes and contact us for class registration.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "categories": [
+    "education"
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-landing.png",
+      "sizes": "1280x900",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Sayuru Amarasinghe - A/L and O/L ICT class portal on desktop"
+    },
+    {
+      "src": "/screenshots/mobile-landing.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Sayuru Amarasinghe - A/L and O/L ICT class portal on mobile"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/logos/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logos/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Online Classes",
+      "url": "/#flow"
+    },
+    {
+      "name": "About Sayuru",
+      "url": "/#about-teacher"
+    }
+  ]
+}
