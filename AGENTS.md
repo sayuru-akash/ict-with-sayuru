@@ -167,4 +167,4 @@ Audit the production and full dependency graphs separately. The last documented 
 - Report the actual commit and dirty state when relevant. Distinguish local commit, remote push, local build, Vercel deployment, domain verification and live runtime proof.
 - Close task-created browser sessions and temporary servers at handoff. Keep a requested preview running; preserve pre-existing user sessions/processes. State the remaining preview URL.
 - Summarize what changed, which checks actually ran, known limits and any deliberately retained warnings. Date audit/performance evidence and never present old measurements as newly verified.
-- Keep `README.md` and this file aligned with changed commands, routes, environment contracts, ownership decisions and asset workflows.
+- Keep `README.md` and this file aligned with changed commands, routes, environment contracts, ownership decisions and asset workflows. Do not invent a project license; retain the bundled font licenses.

@@ -312,4 +312,6 @@ Next.js remains locked to 15.5.28. Its nested PostCSS dependency is overridden t
 
 Read **[AGENTS.md](AGENTS.md)** before changing this project. It documents the implementation map, owner decisions, content and identity constraints, validation requirements, screenshot workflow, environment boundaries and Git/deployment expectations.
 
-For maintenance, keep this README focused on the product and how to work with it. Keep operational instructions for coding agents in `AGENTS.md`, and update both when a change affects their contracts.
+For maintenance, keep changes scoped, follow the checks for the affected area, and update the documentation when commands or behavior change. Keep operational instructions for coding agents in `AGENTS.md`.
+
+A repository-wide project license has not been declared. The bundled font licenses in `public/fonts/latin/` are retained separately; do not infer a project license from them.
