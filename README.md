@@ -1,212 +1,315 @@
-# Sayuru Amarasinghe | A/L & O/L ICT
+<div align="center">
+  <img src="public/logos/sayuru-mark.svg" alt="Sayuru ICT monogram" width="72" height="72" />
+  <h1>ICT with Sayuru</h1>
+  <p><strong>A/L &amp; O/L ICT with Sayuru Amarasinghe</strong></p>
+  <p>සයුරු අමරසිංහ සමඟ ICT ඉගෙනගන්න · Online classes across Sri Lanka</p>
+  <p>
+    <a href="#screenshots">Screenshots</a> ·
+    <a href="#quick-start">Quick start</a> ·
+    <a href="#project-guide">Project guide</a> ·
+    <a href="#deploy-to-vercel">Deploy</a> ·
+    <a href="AGENTS.md">Agent instructions</a>
+  </p>
+  <p><code>Next.js 15</code> <code>React 19</code> <code>TypeScript</code> <code>Tailwind CSS 4</code> <code>Node.js 24</code></p>
+</div>
 
-Online G.C.E. Advanced Level and Ordinary Level ICT classes with **Sayuru Amarasinghe** in Sri Lanka.
+![Desktop landing page with Sayuru Amarasinghe's portrait](docs/screenshots/desktop-home.png)
 
-**Production domain:** [ict.sayuru.me](https://ict.sayuru.me)  
-**Local preview:** [127.0.0.1:3107](http://127.0.0.1:3107)
+A responsive, bilingual ICT tuition website with A/L and O/L programmes, online class enquiries, an animated teacher profile, student reviews and direct contact options. Built around Sayuru's identity, graduation photograph and professional background.
 
-The local link works while the development server is running. The production domain is configured in the project; deployment is a separate step.
+**Website domain:** [ict.sayuru.me](https://ict.sayuru.me) · **Repository:** [sayuru-akash/ict-with-sayuru](https://github.com/sayuru-akash/ict-with-sayuru)
 
-## Teacher and contact details
+> This is the public tuition website. WhatsApp registration and email-draft forms are available; the student login is a preview. A dashboard, payments, recordings and marks tracking are not implemented in this frontend.
 
-- **Name:** Sayuru Amarasinghe (සයුරු අමරසිංහ)
-- **Qualification:** BSc (Hons) Software Engineering (UK)
-- **Current studies:** (Reading) MSc in IT & Cyber Security (UK)
-- **Role:** CEO at Codezela Technologies
-- **Email:** [sayuru@codezela.com](mailto:sayuru@codezela.com)
-- **Phone:** [071 288 3835](tel:+94712883835)
-- **WhatsApp:** [Class registration](https://wa.me/94712883835)
-- **Facebook:** [ICT with Sayuru](https://www.facebook.com/ict.sayuru.me)
+## Contents
 
-## Website features
-
-- Sinhala and English content with responsive desktop, tablet and mobile layouts.
-- A/L and O/L ICT programme cards and WhatsApp registration links.
-- Existing A/L online schedules for the 2026, 2027 and 2028 batches.
-- O/L timetable enquiries through WhatsApp. No O/L days, times or fees are invented.
-- Original graduation photo in About and a transparent portrait in the hero.
-- Teacher terminal showing qualifications, current studies, professional role and contacts.
-- Theory, revision, paper practice and other existing programme features.
-- Student review marquee, FAQs, contact form and feedback dialog.
-- Privacy and refund pages, cookie preferences, favicons and app installation metadata.
-
-The student results section and its navigation links have been removed. Its original component and dataset remain as unused source files. Existing student reviews are retained at the owner's request for later replacement; the two teacher name references were updated with the branding. Reviews are not used to create search-engine rating or review claims.
+- [Screenshots](#screenshots)
+- [What the website includes](#what-the-website-includes)
+- [Quick start](#quick-start)
+- [Commands and checks](#commands-and-checks)
+- [Configuration](#configuration)
+- [Project guide](#project-guide)
+- [Content and visual assets](#content-and-visual-assets)
+- [SEO and discovery](#seo-and-discovery)
+- [Deploy to Vercel](#deploy-to-vercel)
+- [Verification and current limits](#verification-and-current-limits)
+- [Working with agents](#working-with-agents)
 
 ## Screenshots
 
-| Desktop | Mobile |
+Real browser captures of the local production build, refreshed on **1 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+
+### A/L and O/L programmes
+
+![Separate Advanced Level and Ordinary Level ICT programme cards](docs/screenshots/programmes.png)
+
+### Mobile experience
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <strong>Landing page</strong><br /><br />
+      <img src="docs/screenshots/mobile-home.png" alt="Mobile landing page at 390 pixels wide" width="260" />
+    </td>
+    <td align="center" valign="top" width="50%">
+      <strong>Programme choices</strong><br /><br />
+      <img src="docs/screenshots/mobile-programmes.png" alt="A/L and O/L programme cards stacked on mobile" width="260" />
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary><strong>More previews: teacher profile, online classes and contact</strong></summary>
+
+### Teacher profile
+
+The original graduation photo sits beside an animated terminal displaying the teacher's qualifications, current studies and professional role.
+
+![Teacher profile with original graduation photograph and animated terminal](docs/screenshots/teacher-profile.png)
+
+### Online classes
+
+Existing A/L batch schedules are available in class dialogs. O/L enquiries open WhatsApp without inventing a timetable.
+
+![A/L batch cards and O/L online class enquiry](docs/screenshots/online-classes.png)
+
+### FAQs and contact
+
+![Sinhala FAQ accordion beside the terminal-style contact form](docs/screenshots/faqs-contact.png)
+
+</details>
+
+## What the website includes
+
+| Experience | Implementation |
 | --- | --- |
-| ![Desktop website preview](public/screenshots/desktop-landing.png) | ![Mobile website preview](public/screenshots/mobile-landing.png) |
+| Personal branding | Sayuru's portrait, SA monogram, qualifications, Codezela role and contact links |
+| Programmes | Separate A/L and O/L ICT cards with contextual WhatsApp enquiries |
+| Learning features | Theory and revision, paper practice, speed revision, Hello World ICT and End Game |
+| Teacher profile | Original graduation photograph and an automatically typed terminal presentation |
+| Online classes | Retained 2026, 2027 and 2028 A/L schedules, plus an O/L timetable enquiry |
+| Student reviews | Two scrolling rows loaded from the retained local review dataset |
+| Contact and feedback | Required-field validation, a feedback rating selector and prepared email drafts |
+| Navigation | Desktop navigation, a mobile menu and Lenis anchor scrolling |
+| Policies | Privacy/terms and refund pages with shared layout and contact details |
+| App presentation | Manifest, favicons, install icons, browser-dependent installation guidance and saved cookie preferences |
+| Search and sharing | Route-specific metadata, JSON-LD, social previews, sitemap and crawler directives |
 
-## Technology
+**Owner-approved content boundaries:** keep both A/L and O/L, retain the current reviews until replacement is requested, and keep the student results section removed. `Results.tsx` and its dataset remain unused source files, not a published section.
 
-Next.js 15 App Router, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lenis, Radix UI, Lucide icons and Sonner notifications. Sinhala and English fonts and illustration assets are served locally. The English font licenses are included in `public/fonts/latin/`.
+## Quick start
 
-## Local development
+### Requirements
 
-Use **Node.js 24.x** and npm. `.nvmrc` selects Node 24, `package.json` declares the same runtime for Vercel, and `package-lock.json` records the dependency versions. With nvm installed, run `nvm use` before installing dependencies.
+- **Node.js 24.x**, as declared in `.nvmrc` and `package.json`.
+- **npm** with the committed `package-lock.json`.
+- A free local port. Use an already-running preview when appropriate.
 
 ```sh
+git clone https://github.com/sayuru-akash/ict-with-sayuru.git
+cd ict-with-sayuru
+
+# If you use nvm
+nvm use
+
 npm ci
 npm run dev -- --hostname 127.0.0.1 --port 3107
 ```
 
-Open [http://127.0.0.1:3107](http://127.0.0.1:3107). `npm run dev` without flags uses Next.js's default port, 3000.
+Open **[http://127.0.0.1:3107](http://127.0.0.1:3107)**. No environment variables are required for the public website. Without the host/port flags, `npm run dev` uses Next.js defaults, normally port 3000.
 
-## Validation and production build
+### Run a production build locally
 
 ```sh
-# Lint and type checking
-npm run lint
-npm run typecheck
-
-# SEO checks against a running local server
-npm run check:seo -- http://127.0.0.1:3107
-
-# Optimized production build
 npm run build
-
-# Serve the production build
-npm start
+npm start -- --hostname 127.0.0.1 --port 3107
 ```
 
-The SEO check verifies route responses, distinct titles and descriptions, canonical URLs, Open Graph and Twitter previews, social image availability, one primary heading per public page, structured data, A/L and O/L content, preserved reviews, removal of student results, sitemap and authentication noindex rules. Lint uses the ESLint CLI with a zero-warning threshold. The build enforces ESLint and TypeScript checks. Native image elements are allowed because the site explicitly supplies responsive AVIF/WebP sources and matching preloads.
+Stop a development server using this checkout before building, or use an isolated build copy. Development and production builds share `.next`; do not overwrite a running server's build output.
 
-Avoid running a production build against the same `.next` directory as an active development server. Use a separate checkout or build copy if the preview needs to stay available.
+## Commands and checks
 
-## Git and Vercel configuration
+| Command | Purpose |
+| --- | --- |
+| `npm ci` | Install exactly the locked dependency graph |
+| `npm run dev` | Start the development server |
+| `npm run lint` | Run Next/TypeScript ESLint rules with zero warnings allowed |
+| `npm run typecheck` | Run TypeScript without emitting JavaScript |
+| `npm run build` | Create the production build, including lint and type checks |
+| `npm start` | Serve an existing production build |
+| `npm run check:seo -- http://127.0.0.1:3107` | Verify the running site's HTTP and SEO contracts |
+| `npm audit --omit=dev` | Audit the production dependency graph |
+| `git diff --check` | Detect whitespace errors before committing |
 
-The current repository is `sayuru-akash/ict-with-sayuru`, on branch `main`. The project folder was renamed from `ict-sayuru` to `ict-with-sayuru`.
+The SEO check covers all three public pages, unique metadata, canonical and social URLs, social image availability, one H1 per page, identity and structured data, both programmes, retained reviews, absent results, sitemap, robots and authentication `noindex` behavior.
 
-`.gitignore` excludes dependencies, Next.js output, generated TypeScript caches, local environment files, Vercel connection state and operating system files. Keep `.env.example` tracked. Never add `.env.local` or `.vercel/project.json` to a commit.
+There is no dedicated unit-test or browser-test runner configured in `package.json`. For UI changes, supplement these commands with real desktop/mobile checks of the affected flow, browser errors, broken assets and overflow.
 
-For a manual Vercel import, use:
+## Configuration
+
+[`src/lib/site.ts`](src/lib/site.ts) is the main source for public identity and contact settings. Optional environment values are listed in [`.env.example`](.env.example).
+
+```sh
+cp .env.example .env.local
+```
+
+| Variable | Default or behavior |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Defaults to `https://ict.sayuru.me`; used for canonical, sitemap and structured-data URLs |
+| `NEXT_PUBLIC_API_URL` | Unset by default; keeps login in preview and prevents requests to an unconfigured backend |
+| `GOOGLE_SITE_VERIFICATION` | Optional Search Console verification token |
+| `BING_SITE_VERIFICATION` | Optional Bing verification token |
+
+Set the API value to an **owned backend origin**, without a trailing `/api` path. Helpers append paths such as `/api/auth/me`. Public environment values and static metadata must be set before building; rebuild after changing them. Keep `.env.local` and `.vercel/` untracked.
+
+### Teacher identity
+
+| Field | Approved value |
+| --- | --- |
+| Name | Sayuru Amarasinghe / සයුරු අමරසිංහ |
+| Qualification | BSc (Hons) Software Engineering (UK) |
+| Current studies | (Reading) MSc in IT & Cyber Security (UK) |
+| Role | CEO at Codezela Technologies |
+| Email | [sayuru@codezela.com](mailto:sayuru@codezela.com) |
+| Phone / WhatsApp | [071 288 3835](https://wa.me/94712883835) |
+| Facebook | [facebook.com/ict.sayuru.me](https://www.facebook.com/ict.sayuru.me) |
+
+The MSc is ongoing, not a completed qualification. The website's public contact details are intentional content, not secret environment values.
+
+## Project guide
+
+```text
+ict-with-sayuru/
+├── AGENTS.md                 Agent workflow and project constraints
+├── README.md                 Project overview and maintainer guide
+├── docs/screenshots/         README gallery, not served by the app
+├── public/                   Portraits, fonts, illustrations and local datasets
+├── scripts/check-seo.mjs      HTTP/metadata verification
+├── src/
+│   ├── app/                  Routes, root layout, fonts, CSS, sitemap and robots
+│   ├── components/           Landing sections and shared UI
+│   ├── context/              Authentication state and preview login
+│   ├── lib/                  Site settings, SEO, API helpers and utilities
+│   └── types/                Custom tgs-player JSX declarations
+├── .env.example              Optional configuration contract
+├── eslint.config.mjs         Next/TypeScript lint rules
+├── next.config.ts            Initial-head metadata and image behavior
+└── package-lock.json         Reproducible npm dependency graph
+```
+
+### Routes and rendering
+
+| Route | Responsibility |
+| --- | --- |
+| `/` | Server entry injects homepage JSON-LD, then renders the client landing-page composition |
+| `/privacy-policy` | English privacy/terms content with its own metadata and breadcrumbs |
+| `/refund-policy` | English refund content with its own metadata and breadcrumbs |
+| `/auth/callback` | Optional backend OAuth code exchange; marked `noindex` |
+| `/sitemap.xml` | Three public routes and homepage image references |
+| `/robots.txt` | Crawl rules and the public sitemap location |
+
+`src/app/layout.tsx` supplies self-hosted fonts, resource hints, site-wide structured data, authentication context and toasts. `HomePage.tsx` orders the landing sections and owns the Lenis root. Shared dialog, section-header and terminal components live in `src/components/ui/`.
+
+### Where to make common changes
+
+| Change | Start here |
+| --- | --- |
+| Name, qualifications, email, phone or Facebook | `src/lib/site.ts`, then check page-specific copy and metadata |
+| Hero portrait or responsive image sizing | `Hero.tsx` and matching preload hints in `app/layout.tsx` |
+| A/L and O/L programme cards | `Features.tsx`; keep matching course data in `lib/seo.ts` |
+| A/L timetable or O/L class enquiry | `ClassLocations.tsx` |
+| Animated profile presentation | `AboutTeacher.tsx` and `ui/macbook-terminal.tsx` |
+| Student reviews | `public/comments/comments.json` and `Testimonials.tsx` |
+| FAQs, contact or feedback | `Faqs.tsx` and `FeedbackSection.tsx` |
+| Navigation / footer anchors | `Navbar.tsx`, `Footer.tsx` and matching section IDs |
+| Search metadata or social preview | `lib/seo.ts`, `StructuredData.tsx` and the social image |
+| Policy text | The relevant policy route and shared `PolicyLayout.tsx` |
+| App name, icons or install screenshots | `public/manifest.webmanifest`, `public/logos/`, `Footer.tsx` |
+
+## Content and visual assets
+
+**Photography:** `sayuru-amarasinghe-original.webp` is the optimized supplied graduation photograph used in About. The transparent `sayuru-amarasinghe.webp` cutout is used in the hero and social card. Responsive AVIF and WebP variants reduce downloads. Portrait changes must preserve Sayuru's likeness; the generated cutout is not described as pixel-identical to the original.
+
+**Branding and fonts:** `public/logos/sayuru-mark.svg` is the source SA monogram. Icons are local PNG/ICO variants. `src/app/fonts.css` defines the self-hosted English and Sinhala families; English font licenses are in `public/fonts/latin/`. TGS illustrations use the local player in `public/lib/`.
+
+**Datasets:** `public/comments/comments.json` contains the retained reviews. Do not invent testimonials or present this dataset as newly verified. The unused results data and result component are preserved without rendering them.
+
+**Screenshots:** keep documentation captures in `docs/screenshots/`. The app's install screenshots are separate files in `public/screenshots/`; if those change, update their declared dimensions in the manifest too.
+
+## SEO and discovery
+
+- Bilingual homepage title/description and distinct metadata for policy routes.
+- Canonical URLs, Open Graph and Twitter previews based on the configured public origin.
+- Metadata emitted in the initial HTML head through `htmlLimitedBots` configuration.
+- Site-wide `EducationalOrganization`, `Person` and `WebSite` data, plus two homepage `Course` entries.
+- The ongoing MSc appears in the profile description, not as an awarded credential.
+- Legal page breadcrumbs, a public sitemap with image URLs and crawler-readable auth `noindex` tags.
+- No fabricated review/rating markup, fake language-version URLs or FAQ rich-result promises.
+
+Update the sitemap's content date when the corresponding public page content changes, not on every build. A documentation-only update does not change the site's publication date.
+
+After deployment, verify ownership in Google Search Console and optionally Bing Webmaster Tools, submit `https://ict.sayuru.me/sitemap.xml`, and inspect the homepage. Search indexing, field performance and ranking depend on the deployed site and cannot be proven by a local audit score.
+
+<details>
+<summary><strong>SEO references and measurement notes</strong></summary>
+
+See Google's [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [structured-data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [course-list requirements](https://developers.google.com/search/docs/appearance/structured-data/course), [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) and [documentation updates](https://developers.google.com/search/updates).
+
+The site describes two courses. This does not establish eligibility for Google's course-list carousel, whose requirements include at least three courses. There is no promise of a particular search position or rich result.
+
+Historical Lighthouse 13.5 mobile results from **27 October 2026**: SEO 100, accessibility 100, best practices 100, performance 81. FCP was 2.1 s, LCP 4.3 s, CLS 0 and total blocking time 70 ms. These remain dated local measurements, not live-user Core Web Vitals or a new audit for every commit.
+
+</details>
+
+## Deploy to Vercel
+
+Push the intended commit to GitHub, then import **`sayuru-akash/ict-with-sayuru`** into your Vercel account.
 
 | Setting | Value |
 | --- | --- |
-| Repository | `sayuru-akash/ict-with-sayuru` |
-| Production branch | `main` |
 | Framework preset | Next.js |
+| Production branch | `main` |
 | Root directory | Repository root (`./`) |
 | Node.js version | `24.x` |
 | Install command | `npm ci` |
 | Build command | `npm run build` |
-| Output directory | Next.js default, no override |
-| Public domain | `ict.sayuru.me` |
+| Output directory | Next.js default; no override |
+| Domain | `ict.sayuru.me` |
 
-No environment variables are required to build the current landing website. The production domain defaults to `https://ict.sayuru.me`. Keep `NEXT_PUBLIC_API_URL` unset until an owned backend and the required portal screens are available. Search verification tokens are optional.
+1. Set optional environment values before the deployment build. Keep `NEXT_PUBLIC_API_URL` unset for the current public-site experience.
+2. Deploy, connect the domain, enable HTTPS and redirect alternate public hostnames to the canonical one.
+3. Run `npm run check:seo -- https://ict.sayuru.me` and check the deployed mobile/desktop flows.
+4. Complete Search Console ownership and sitemap submission separately.
 
-Push the reviewed local commit to GitHub before importing, so Vercel receives the checked version. This preparation does not connect a Vercel account, create a Vercel project, or deploy the site.
+A local commit, a Git push, a successful build and a verified live deployment are separate outcomes. Writing documentation does not connect Vercel, change DNS or publish the site.
 
-The PostCSS dependency used by Next.js is pinned through an npm override to `8.5.32` to address the dependency audit findings while retaining Next.js 15.5.28. Keep the override until an upstream Next.js version includes a patched compatible release. The Next.js 15-compatible ESLint toolchain has development-only moderate minimatch advisories; they are not in the production dependency graph. Avoid linting untrusted repositories or attacker-controlled glob patterns. Full dependency audit results must be distinguished from `npm audit --omit=dev`.
+## Verification and current limits
 
-## Commit verification, 1 November 2026
+**Verified baseline, 1 November 2026:** clean dependency installation, zero-warning lint, TypeScript, production build, HTTP SEO checks and desktop/mobile smoke checks passed. The tests retained reviews and confirmed that student results were absent.
 
-A fresh `npm ci`, `npm run lint`, `npm run typecheck`, and `npm run build` passed on Node 24.15.0. `npm run check:seo` passed against the resulting production server for the homepage, both policy pages, social image, structured data, sitemap, robots and authentication noindex behavior. The production dependency audit (`npm audit --omit=dev`) reported zero vulnerabilities. The full audit reported 14 moderate development-tool findings through minimatch in the Next.js 15-compatible lint toolchain; these remain a documented limitation rather than a clean full-audit claim.
-
-The earlier Lighthouse figures below are historical measurements from 27 October, not a new audit for this commit. Production deployment, DNS, third-party account setup and live Vercel behavior remain unverified until you connect and deploy the repository.
-
-## Local verification, 27 October 2026
-
-TypeScript, the production build, and the HTTP SEO checks passed. Browser checks covered 320, 390, 768, 1024 and 1440 pixel widths, programme navigation, A/L dialogs, O/L WhatsApp destinations, and retention of reviews with the results section absent. No horizontal page overflow or browser errors were observed.
-
-A Lighthouse 13.5 mobile audit against the local production build reported:
-
-| Category | Score |
+| Boundary | Current state |
 | --- | --- |
-| SEO | 100/100 |
-| Accessibility | 100/100 |
-| Best practices | 100/100 |
-| Performance | 81/100 |
+| Registration | WhatsApp links, including programme-specific enquiry drafts |
+| Contact / feedback | Opens the visitor's email application; does not confirm delivery or store messages on a server |
+| Teacher terminal | Animated profile presentation; no interactive shell or remote command execution |
+| Login | Preview notification without an owned backend configuration |
+| Student portal | Dashboard, payments, recordings and marks screens are not implemented |
+| App installation | Manifest and platform-specific prompts; no offline service worker is implemented |
+| Deployment | Vercel, DNS and search-account setup must be verified when actually performed |
 
-Measured mobile lab metrics were FCP 2.1 s, LCP 4.3 s, CLS 0, and total blocking time 70 ms. Self-hosted fonts and responsive AVIF images improved the performance score from 73 to 81 in this local comparison. Remaining performance costs include the animation runtime and JavaScript work. These are local lab measurements, not deployed field data, a search ranking score, or proof of indexing. One existing animation-player deprecation warning remains.
+Some retained FAQ and policy copy describes portal services and payment workflows. Review that content with the owner before launching those services; do not treat the copy as proof that they exist.
 
-## Configuration
+<details>
+<summary><strong>Dependency and runtime notes</strong></summary>
 
-Personal details are centralized in [`src/lib/site.ts`](src/lib/site.ts). Copy `.env.example` to `.env.local` when overriding defaults:
+The 1 November production dependency audit reported **zero vulnerabilities**. The full audit reported **14 moderate development-tool findings** through minimatch in the Next.js 15-compatible ESLint toolchain. Audit counts are time-sensitive; rerun the commands when checking a later release.
 
-```env
-NEXT_PUBLIC_SITE_URL=https://ict.sayuru.me
-# NEXT_PUBLIC_API_URL=https://your-owned-backend-origin
-# GOOGLE_SITE_VERIFICATION=your-verification-token
-# BING_SITE_VERIFICATION=your-verification-token
-```
+Next.js remains locked to 15.5.28. Its nested PostCSS dependency is overridden to 8.5.32; retain that override until an upstream compatible version includes the required fix. Do not use a forced major upgrade simply to silence an audit report. The native image lint rule is disabled intentionally for the site's explicit responsive image markup. The local TGS player has an existing deprecation warning.
 
-Set `NEXT_PUBLIC_API_URL` to the backend origin without a trailing `/api` path. API paths are appended by the application. Public environment variables are included at build time, so rebuild after changing them.
+</details>
 
-The Google and Bing verification values are optional tokens supplied by your own search engine accounts, not fabricated values. They are emitted as verification meta tags only when configured.
+## Working with agents
 
-## SEO implementation
+Read **[AGENTS.md](AGENTS.md)** before changing this project. It documents the implementation map, owner decisions, content and identity constraints, validation requirements, screenshot workflow, environment boundaries and Git/deployment expectations.
 
-The search focus is Sayuru Amarasinghe, සයුරු අමරසිංහ, online A/L ICT classes, online O/L ICT classes and ICT tuition in Sri Lanka.
-
-- Bilingual homepage title and description matching the actual programmes.
-- Distinct metadata for the homepage, privacy page and refund page.
-- Absolute canonical URLs and complete Open Graph/Twitter previews on every public page.
-- Metadata included in the initial HTML head for crawlers and link-preview clients.
-- A Sinhala page language with English language annotations for legal content and programme descriptions.
-- Server-rendered content and JSON-LD, with two courses on the homepage only.
-- EducationalOrganization, Person and WebSite data grounded in the supplied teacher details.
-- Current MSc studies described as reading, rather than a completed credential.
-- Legal page WebPage data and Home-to-page breadcrumbs.
-- A sitemap containing the three public routes and homepage image URLs.
-- An accurate content update date instead of a new sitemap date on every build.
-- Authentication callback pages marked `noindex`; crawlers can read that directive.
-- Responsive AVIF/WebP portraits with a matching hero preload and lazy-loaded About photo.
-- Self-hosted fonts and a preloaded Sinhala heading font to reduce external render-blocking requests.
-- No fabricated ratings, review schema, unsupported language-version links or retired FAQ rich-result markup.
-
-Structured data helps describe the content. It does not guarantee a rich result or a ranking position. The two-course markup is not presented as qualifying for Google's course-list carousel, which requires at least three courses and additional conditions.
-
-Reference guidance: [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [title links](https://developers.google.com/search/docs/appearance/title-link), [structured data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [course-list requirements](https://developers.google.com/search/docs/appearance/structured-data/course), [sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), and [FAQ rich-result retirement](https://developers.google.com/search/updates).
-
-## Forms and student portal status
-
-The contact and feedback forms validate input and open the visitor's email app with a prepared message to `sayuru@codezela.com`. Opening that draft does not send it automatically. Programme and class links open WhatsApp for `+94712883835`.
-
-Login displays a preview notification when no backend is configured. OAuth callback and API helpers are present, but the student dashboard, payments, recordings and marks screens are not implemented in this frontend. Connecting a backend alone does not create those screens. Existing FAQ and policy references to portal services describe the retained content and need review before those services are launched.
-
-## Main files
-
-| Location | Purpose |
-| --- | --- |
-| `src/app/page.tsx` | Server homepage entry and course structured data |
-| `src/components/HomePage.tsx` | Landing page composition and smooth scrolling |
-| `src/lib/site.ts` | Name, qualifications, role, contacts and public origin |
-| `src/lib/seo.ts` | Shared page metadata and structured data |
-| `src/components/StructuredData.tsx` | JSON-LD serialization with safe escaping |
-| `src/components/Hero.tsx` | Hero portrait, programme label and registration link |
-| `src/components/Features.tsx` | A/L and O/L programmes and learning features |
-| `src/components/AboutTeacher.tsx` | Original photo and teacher terminal |
-| `src/components/ClassLocations.tsx` | A/L schedules and O/L class enquiry |
-| `public/comments/comments.json` | Retained student reviews |
-| `src/app/privacy-policy/page.tsx` | Privacy policy and terms |
-| `src/app/refund-policy/page.tsx` | Refund policy |
-| `src/app/auth/layout.tsx` | Authentication indexing restrictions |
-| `src/app/sitemap.ts` | Public route and image sitemap |
-| `src/app/robots.ts` | Crawl rules and sitemap location |
-| `public/manifest.webmanifest` | Installation name, icons, screenshots and shortcuts |
-| `scripts/check-seo.mjs` | Repeatable HTTP SEO checks |
-
-## Photos and branding
-
-- `public/images/sayuru-amarasinghe-original.webp`: optimized supplied graduation photo with its original face and setting.
-- `public/images/sayuru-amarasinghe.webp`: transparent portrait derived using the built-in image generation tool.
-- Responsive AVIF hero variants and the `-480.webp` and `-768.webp` fallback variants provide smaller portrait downloads.
-- `public/images/sayuru-amarasinghe-social.webp`: 1200 x 630 social preview for A/L and O/L ICT.
-- `public/logos/sayuru-mark.svg`: SA monogram, also rendered as browser and install icons.
-- `public/screenshots/`: current desktop and mobile installation previews.
-
-Portrait edit prompt: remove only the flags and indoor background; preserve Sayuru's face, facial structure, skin tone, eyes, hair, facial hair, expression, pose, hands, graduation cap, purple gown, embroidery, suit and tie; crop empty space above the cap; use a transparent background with natural edges and no added text. The ungenerated original photo remains in About; the cutout is used in the hero and social preview.
-
-## Deployment and search indexing
-
-1. Build and deploy using the Next.js preset, with `ict.sayuru.me` configured as the public domain and HTTPS enabled.
-2. Set the production environment values before building. Keep the canonical domain consistent and redirect other public hostnames to it.
-3. Run `npm run check:seo -- https://ict.sayuru.me` against the deployed site.
-4. Verify ownership in Google Search Console using DNS or the optional verification token, then submit `https://ict.sayuru.me/sitemap.xml` and inspect the homepage URL.
-5. Verify the site in Bing Webmaster Tools if desired and submit the same sitemap.
-6. Check mobile page experience and Core Web Vitals on the deployed domain. Local tests do not establish live-user field performance.
-7. Replace retained reviews with approved reviews and keep programmes, timetable information and teacher details current. Update the sitemap content date when the corresponding content changes.
-
-No production deployment, Search Console ownership verification or sitemap submission is performed by editing this project. Search visibility depends on crawling, indexing, content quality, reputation and competition as well as the implementation.
+For maintenance, keep this README focused on the product and how to work with it. Keep operational instructions for coding agents in `AGENTS.md`, and update both when a change affects their contracts.
