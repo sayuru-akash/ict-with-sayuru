@@ -37,7 +37,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 ## Screenshots
 
-Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes and FAQs updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes, student reviews and FAQs updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
 
 ### A/L and O/L programmes
 
@@ -59,13 +59,19 @@ Real browser captures of the local production build, refreshed on **1 November 2
 </table>
 
 <details>
-<summary><strong>More previews: teacher profile, online classes and contact</strong></summary>
+<summary><strong>More previews: teacher profile, student reviews, online classes and FAQs</strong></summary>
 
 ### Teacher profile
 
 The supplied square graduation photo sits beside an animated terminal displaying the teacher's qualifications, current studies and professional role.
 
 ![Teacher profile with the updated square graduation photograph and animated terminal](docs/screenshots/teacher-profile.png)
+
+### Student reviews
+
+The 15 supplied reviews keep their original wording, student names and cities. Scrolling rows can be paused, and the read-all dialog shows every full review. Reduced-motion preferences stop automatic scrolling.
+
+![Student reviews with name and city attributions and pause and read-all controls](docs/screenshots/student-reviews.png)
 
 ### Online classes
 
@@ -233,7 +239,7 @@ ict-with-sayuru/
 
 **Branding and fonts:** `public/logos/sayuru-mark.svg` is the source SA monogram. Icons are local PNG/ICO variants. `src/app/fonts.css` defines the self-hosted English and Sinhala families; English font licenses are in `public/fonts/latin/`. TGS illustrations use the local player in `public/lib/`.
 
-**Datasets:** `public/comments/comments.json` contains 15 owner-supplied reviews with `name`, `location` and `comment`. They are statically imported for initial rendering; students' full quotes and cities appear in scrolling cards and a read-all dialog. Do not invent testimonials or present this dataset as newly verified. The unused results data and result component are preserved without rendering them.
+**Datasets:** `public/comments/comments.json` contains 15 owner-supplied reviews with `name`, `location` and `comment`. They are statically imported for initial rendering, so rebuild after changing the dataset; students' full quotes and cities appear in scrolling cards and a read-all dialog. Do not invent testimonials or present this dataset as newly verified. The unused results data and result component are preserved without rendering them.
 
 **Screenshots:** keep documentation captures in `docs/screenshots/`. The app's install screenshots are separate files in `public/screenshots/`; if those change, update their declared dimensions in the manifest too.
 
