@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { SITE } from "@/lib/site";
 import { pageMetadata, legalPageJsonLd } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import {
@@ -8,7 +10,7 @@ import {
 
 export const metadata = pageMetadata('Refund Policy | Sayuru Amarasinghe', "Refund eligibility, requests and contact information for Sayuru Amarasinghe's online A/L and O/L ICT tuition classes in Sri Lanka.", '/refund-policy');
 
-const LAST_UPDATED = "October 2026";
+const LAST_UPDATED = "November 2026";
 
 const SECTIONS = [
   { id: "eligible", title: "1. You CAN get a refund if" },
@@ -79,10 +81,10 @@ export default function RefundPolicyPage() {
         <p>
           Email{" "}
           <a
-            href="mailto:sayuru@codezela.com"
+            href={`mailto:${SITE.email}`}
             className="font-medium text-blue-600 underline underline-offset-2"
           >
-            sayuru@codezela.com
+            {SITE.email}
           </a>{" "}
           with your name, registered email/phone, payment date, and your OnePay
           reference or bank slip. We&apos;ll kindly review and respond within{" "}
@@ -92,6 +94,10 @@ export default function RefundPolicyPage() {
         </p>
       </PolicySection>
 
+      <p className="text-sm">
+        For general enrolment and class-access conditions, see our{" "}
+        <Link href="/terms-and-conditions" className="font-medium text-blue-600 underline underline-offset-2">Terms and Conditions</Link>.
+      </p>
       <PolicySection id="contact-us" title="4. Contact Us">
         <ContactBox />
       </PolicySection>

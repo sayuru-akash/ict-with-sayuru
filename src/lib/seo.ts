@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import { OL_TWENTY_DAY_PLAN as PLAN } from "@/lib/programmes";
 
 export const HOME_TITLE = "Sayuru Amarasinghe | A/L & O/L ICT Online පන්ති";
 export const HOME_DESCRIPTION = "Online A/L සහ O/L ICT පන්ති සයුරු අමරසිංහ සමඟ. Theory, revision සහ past papers ඉගෙනගන්න. Join Sayuru Amarasinghe's online ICT classes in Sri Lanka.";
@@ -102,8 +103,8 @@ export const HOME_JSON_LD = {
       mainEntity: [{ "@id": `${SITE.url}/#al-ict` }, { "@id": `${SITE.url}/#ol-ict` }],
     },
     ...[
-      { id: "al-ict", name: "G.C.E. A/L ICT Online Classes", level: "G.C.E. Advanced Level", description: "Online A/L ICT theory, revision and past-paper classes with Sayuru Amarasinghe for students in Sri Lanka." },
-      { id: "ol-ict", name: "G.C.E. O/L ICT Online Classes", level: "G.C.E. Ordinary Level", description: "Online O/L Information and Communication Technology classes with Sayuru Amarasinghe for students in Sri Lanka." },
+      { id: "al-ict", name: "G.C.E. A/L ICT Online Classes", level: "G.C.E. Advanced Level", description: "Online A/L ICT theory, revision and past-paper classes with Sayuru Amarasinghe for 2027 and 2028 students in Sri Lanka. Enquire about the timetable." },
+      { id: "ol-ict", name: "G.C.E. O/L ICT Online Classes", level: "G.C.E. Ordinary Level", description: `Online O/L ICT classes with Sayuru Amarasinghe, including the ${PLAN.durationDays} Day Plan with ${PLAN.shortNotes} short notes, special theory sessions and ${PLAN.pastPaperYears} years of past-paper practice. Full 20 Day Plan fee: Rs. ${PLAN.fee.toLocaleString("en-LK")}.` },
     ].map(course => ({
       "@type": "Course", "@id": `${SITE.url}/#${course.id}`, url: `${SITE.url}/#${course.id}`,
       name: course.name, description: course.description, educationalLevel: course.level,

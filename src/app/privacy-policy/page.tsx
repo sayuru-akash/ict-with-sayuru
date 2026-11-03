@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { SITE } from "@/lib/site";
 import { pageMetadata, legalPageJsonLd } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import {
@@ -8,7 +10,7 @@ import {
 
 export const metadata = pageMetadata('Privacy Policy & Terms | Sayuru Amarasinghe', "Privacy policy and terms for Sayuru Amarasinghe's online A/L and O/L ICT classes in Sri Lanka. Read about data use, student information and contact details.", '/privacy-policy');
 
-const LAST_UPDATED = "October 2026";
+const LAST_UPDATED = "November 2026";
 
 const SECTIONS = [
   { id: "what-we-collect", title: "1. What We Collect" },
@@ -35,6 +37,10 @@ export default function PrivacyPolicyPage() {
       sections={SECTIONS}
     >
       <StructuredData data={legalPageJsonLd('Privacy Policy & Terms', '/privacy-policy')} />
+      <p className="rounded-2xl border border-blue-100 bg-blue-50 p-5 text-sm">
+        For current class registration, programme access and study-material rules, read our{" "}
+        <Link href="/terms-and-conditions" className="font-medium text-blue-600 underline underline-offset-2">Terms and Conditions</Link>.
+      </p>
       <p>
         <span className="font-semibold text-slate-800">
           Sayuru Amarasinghe
@@ -118,10 +124,10 @@ export default function PrivacyPolicyPage() {
           You may request access to, correction of, or deletion of your data
           anytime by emailing{" "}
           <a
-            href="mailto:sayuru@codezela.com"
+            href={`mailto:${SITE.email}`}
             className="font-medium text-blue-600 underline underline-offset-2"
           >
-            sayuru@codezela.com
+            {SITE.email}
           </a>
           . We&apos;ll respond as soon as we can, keeping only what we must
           (such as payment records) for legal reasons.

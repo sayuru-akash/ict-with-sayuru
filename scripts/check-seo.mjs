@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 const base = (process.argv[2] || "http://127.0.0.1:3000").replace(/\/+$/, "");
 const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ict.sayuru.me").replace(/\/+$/, "");
-const routes = ["/", "/privacy-policy", "/refund-policy"];
+const routes = ["/", "/privacy-policy", "/refund-policy", "/terms-and-conditions"];
 const decode = value => value.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"');
 const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, decode(value)]));
 const titles = new Set();
@@ -44,8 +44,14 @@ for (const route of routes) {
   const courses = nodes.filter(node => node["@type"] === "Course");
   if (route === "/") {
     assert.equal(courses.length, 2, "Homepage must describe A/L and O/L courses");
-    for (const id of ["al-ict", "ol-ict", "programmes", "testimonials"]) assert(html.includes(`id="${id}"`), `Missing visible ${id} section`);
+    for (const id of ["al-ict", "ol-ict", "programmes", "testimonials", "ol-20-day-plan"]) assert(html.includes(`id="${id}"`), `Missing visible ${id} section`);
     assert(courses.some(course => course.educationalLevel.includes("Ordinary")));
+    assert(/<a[^>]*href="#flow"[^>]*>\s*Join Online Classes/.test(html), "Hero join button must lead to the class section");
+    const classSection = html.match(/<section id="flow"[\s\S]*?<\/section>/)?.[0] || "";
+    const classTitles = [...classSection.matchAll(/<h3[^>]*>(.*?)<\/h3>/gs)].map(([, text]) => decode(text));
+    assert.deepEqual(classTitles, ["O/L ICT 20 Day Plan", "2027 A/L ICT - Online", "2028 A/L ICT - Online", "O/L ICT - Online"], "Class cards must show the plan first and the three current enquiry options");
+    assert(!classSection.includes("2026 A/L") && !classSection.includes("View Class"), "Retired A/L card and schedule controls must stay absent");
+    assert(classSection.includes("Rs. 3,000"), "20 Day Plan must show the owner-supplied total fee");
     assert(!html.includes('id="results"') && !html.includes('href="#results"'), "Removed results section must stay absent");
   } else {
     assert.equal(courses.length, 0, `${route}: course markup belongs on the homepage`);

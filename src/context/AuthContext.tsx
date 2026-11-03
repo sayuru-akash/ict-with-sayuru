@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = useCallback(() => {
     if (!API_BASE_URL) {
-      toast.info("Student portal coming soon", { description: "Please contact Sayuru for online class registration." });
+      toast.info("Student portal coming soon", { description: "Please contact Mr. Sayuru for online class registration." });
       return;
     }
     window.location.href = `${API_BASE_URL}/auth/google`;

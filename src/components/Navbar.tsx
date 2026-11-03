@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useLenis } from "lenis/react";
@@ -140,7 +141,12 @@ export function Navbar() {
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <div className="flex flex-shrink-0 items-center gap-2 pl-1">
+        <Link
+          href="/"
+          aria-label="Sayuru Amarasinghe home"
+          onClick={() => setMobileMenuOpen(false)}
+          className="relative z-10 flex flex-shrink-0 items-center gap-2 rounded-full pl-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+        >
           <img
             src="/logos/sayuru-mark.svg"
             alt=""
@@ -163,7 +169,7 @@ export function Navbar() {
           >
             Sayuru ICT
           </span>
-        </div>
+        </Link>
 
         <div className="pointer-events-none absolute inset-0 hidden items-center justify-center lg:flex">
           <div

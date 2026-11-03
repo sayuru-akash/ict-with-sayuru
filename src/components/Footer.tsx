@@ -150,6 +150,7 @@ const FOOTER_NAVIGATION = [
   { href: "#testimonials", label: "Reviews" },
   { href: "#faqs", label: "FAQs" },
   { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms and Conditions" },
   { href: "/refund-policy", label: "Refund Policy" },
 ];
 
@@ -213,7 +214,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div className="space-y-5">
-            <div className="flex items-center gap-2">
+            <Link href="/" aria-label="Sayuru Amarasinghe home" className="inline-flex items-center gap-2 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600">
               <img
                 src="/logos/sayuru-mark.svg"
                 alt=""
@@ -226,7 +227,7 @@ export function Footer() {
                 </span>{" "}
                 Amarasinghe
               </span>
-            </div>
+            </Link>
             <div className="h-px w-full max-w-[220px] bg-slate-200" />
             <p className="max-w-md leading-relaxed text-slate-500">
               ලංකාවේ හොඳම Online ICT පන්තිය. GCE A/L සහ O/L විෂය නිර්දේශ ආවරණය කරමින්

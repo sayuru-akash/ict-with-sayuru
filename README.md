@@ -37,7 +37,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 ## Screenshots
 
-Real browser captures of the local production build, refreshed on **1 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+Real browser captures of the local production build, refreshed on **1 November 2026**, with the teacher profile and online classes updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
 
 ### A/L and O/L programmes
 
@@ -69,9 +69,9 @@ The original graduation photo sits beside an animated terminal displaying the te
 
 ### Online classes
 
-Existing A/L batch schedules are available in class dialogs. O/L enquiries open WhatsApp without inventing a timetable.
+The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000 total fee, eight short notes, theory sessions and past-paper practice. Regular 2027 A/L, 2028 A/L and O/L cards open WhatsApp enquiries for details and timetables.
 
-![A/L batch cards and O/L online class enquiry](docs/screenshots/online-classes.png)
+![O/L 20 Day Plan and regular A/L and O/L class enquiries](docs/screenshots/online-classes.png)
 
 ### FAQs and contact
 
@@ -85,13 +85,13 @@ Existing A/L batch schedules are available in class dialogs. O/L enquiries open 
 | --- | --- |
 | Personal branding | Sayuru's portrait, SA monogram, qualifications, Codezela role and contact links |
 | Programmes | Separate A/L and O/L ICT cards with contextual WhatsApp enquiries |
-| Learning features | Theory and revision, paper practice, speed revision, Hello World ICT and End Game |
+| Learning features | Theory and revision, paper practice and the 20 Day Plan |
 | Teacher profile | Original graduation photograph and an automatically typed terminal presentation |
-| Online classes | Retained 2026, 2027 and 2028 A/L schedules, plus an O/L timetable enquiry |
+| Online classes | O/L 20 Day Plan details and registration, plus 2027 A/L, 2028 A/L and O/L timetable enquiries |
 | Student reviews | Two scrolling rows loaded from the retained local review dataset |
 | Contact and feedback | Required-field validation, a feedback rating selector and prepared email drafts |
 | Navigation | Desktop navigation, a mobile menu and Lenis anchor scrolling |
-| Policies | Privacy/terms and refund pages with shared layout and contact details |
+| Policies | Privacy, terms and conditions, and refund pages with shared layout and contact details |
 | App presentation | Manifest, favicons, install icons, browser-dependent installation guidance and saved cookie preferences |
 | Search and sharing | Route-specific metadata, JSON-LD, social previews, sitemap and crawler directives |
 
@@ -141,7 +141,7 @@ Stop a development server using this checkout before building, or use an isolate
 | `npm audit --omit=dev` | Audit the production dependency graph |
 | `git diff --check` | Detect whitespace errors before committing |
 
-The SEO check covers all three public pages, unique metadata, canonical and social URLs, social image availability, one H1 per page, identity and structured data, both programmes, retained reviews, absent results, sitemap, robots and authentication `noindex` behavior.
+The SEO check covers all four public pages, unique metadata, canonical and social URLs, social image availability, one H1 per page, identity and structured data, both programmes, retained reviews, absent results, sitemap, robots and authentication `noindex` behavior.
 
 There is no dedicated unit-test or browser-test runner configured in `package.json`. For UI changes, supplement these commands with real desktop/mobile checks of the affected flow, browser errors, broken assets and overflow.
 
@@ -170,7 +170,7 @@ Set the API value to an **owned backend origin**, without a trailing `/api` path
 | Qualification | BSc (Hons) Software Engineering (UK) |
 | Current studies | (Reading) MSc in IT & Cyber Security (UK) |
 | Role | CEO at Codezela Technologies |
-| Email | [sayuru@codezela.com](mailto:sayuru@codezela.com) |
+| Email | [contact@sayuru.me](mailto:contact@sayuru.me) |
 | Phone / WhatsApp | [071 288 3835](https://wa.me/94712883835) |
 | Facebook | [facebook.com/ict.sayuru.me](https://www.facebook.com/ict.sayuru.me) |
 
@@ -204,8 +204,9 @@ ict-with-sayuru/
 | `/` | Server entry injects homepage JSON-LD, then renders the client landing-page composition |
 | `/privacy-policy` | English privacy/terms content with its own metadata and breadcrumbs |
 | `/refund-policy` | English refund content with its own metadata and breadcrumbs |
+| `/terms-and-conditions` | Enrolment, programme fees, access, materials, conduct and consumer rights |
 | `/auth/callback` | Optional backend OAuth code exchange; marked `noindex` |
-| `/sitemap.xml` | Three public routes and homepage image references |
+| `/sitemap.xml` | Four public routes and homepage image references |
 | `/robots.txt` | Crawl rules and the public sitemap location |
 
 `src/app/layout.tsx` supplies self-hosted fonts, resource hints, site-wide structured data, authentication context and toasts. `HomePage.tsx` orders the landing sections and owns the Lenis root. Shared dialog, section-header and terminal components live in `src/components/ui/`.
@@ -217,7 +218,7 @@ ict-with-sayuru/
 | Name, qualifications, email, phone or Facebook | `src/lib/site.ts`, then check page-specific copy and metadata |
 | Hero portrait or responsive image sizing | `Hero.tsx` and matching preload hints in `app/layout.tsx` |
 | A/L and O/L programme cards | `Features.tsx`; keep matching course data in `lib/seo.ts` |
-| A/L timetable or O/L class enquiry | `ClassLocations.tsx` |
+| Class enquiries and O/L 20 Day Plan | `ClassLocations.tsx`, `lib/programmes.ts` |
 | Animated profile presentation | `AboutTeacher.tsx` and `ui/macbook-terminal.tsx` |
 | Student reviews | `public/comments/comments.json` and `Testimonials.tsx` |
 | FAQs, contact or feedback | `Faqs.tsx` and `FeedbackSection.tsx` |
@@ -289,7 +290,7 @@ A local commit, a Git push, a successful build and a verified live deployment ar
 
 | Boundary | Current state |
 | --- | --- |
-| Registration | WhatsApp links, including programme-specific enquiry drafts |
+| Registration | Hero scrolls to the class cards; WhatsApp links include programme-specific enquiry drafts |
 | Contact / feedback | Opens the visitor's email application; does not confirm delivery or store messages on a server |
 | Teacher terminal | Animated profile presentation; no interactive shell or remote command execution |
 | Login | Preview notification without an owned backend configuration |

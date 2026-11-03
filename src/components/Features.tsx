@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Timer, Trophy } from "lucide-react";
+import { CalendarDays, Check } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { loadTgsPlayer, useInViewObserver } from "@/lib/utils";
 import { SITE } from "@/lib/site";
@@ -58,10 +58,10 @@ function AnimatedFeatureIcon({
   const { ref, inView } = useInViewObserver<HTMLDivElement>();
 
   useEffect(() => {
-    if (inView) {
+    if (inView && animation) {
       loadTgsPlayer(() => setReady(true));
     }
-  }, [inView]);
+  }, [inView, animation]);
 
   return (
     <motion.div
@@ -72,7 +72,7 @@ function AnimatedFeatureIcon({
       whileTap={{ scale: 0.94 }}
       transition={{ type: "spring", stiffness: 280, damping: 16 }}
     >
-      {ready && inView ? (
+      {animation && ready && inView ? (
         <tgs-player
           autoplay
           loop
@@ -192,131 +192,58 @@ function PaperIllustration() {
   );
 }
 
-function SpeedRevisionIllustration() {
+function TwentyDayPlanIllustration() {
   return (
     <div
       className="relative flex h-full w-full items-center justify-center overflow-hidden"
       style={{
         background: `linear-gradient(135deg, ${BLUE_DARK}, ${BLUE_MID} 55%, ${BLUE_LIGHT})`,
       }}
-    >
-      <SparkleDots />
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className="absolute rounded-full bg-white/40"
-          style={{
-            top: `${34 + i * 11}%`,
-            left: "6%",
-            width: `${34 - i * 8}%`,
-            height: 3,
-          }}
-          aria-hidden="true"
-        />
-      ))}
-      <motion.div
-        whileHover={{ rotate: 360, scale: 1.15 }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      >
-        <Timer
-          className="relative h-20 w-20 text-white drop-shadow"
-          strokeWidth={1.5}
-          aria-hidden="true"
-        />
-      </motion.div>
-    </div>
-  );
-}
-
-function HelloWorldIllustration() {
-  return (
-    <div
-      className="relative flex h-full w-full items-center justify-center overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, ${BLUE_DARK}, ${BLUE_MID} 55%, ${BLUE_LIGHT})`,
-      }}
+      aria-hidden="true"
     >
       <SparkleDots />
       <motion.div
-        className="relative w-[78%] max-w-[220px] rounded-xl bg-slate-900 p-3 shadow-xl"
-        whileHover={{
-          scale: 1.06,
-          boxShadow:
-            "0 0 0 3px rgba(96,165,250,0.5), 0 12px 24px rgba(0,0,0,0.35)",
-        }}
+        className="relative w-[176px] rounded-xl bg-white p-2.5 shadow-xl"
+        whileHover={{ scale: 1.04, rotate: -2 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 260, damping: 18 }}
       >
-        <div className="mb-2.5 flex gap-1.5" aria-hidden="true">
-          <span className="h-2 w-2 rounded-full bg-red-400" />
-          <span className="h-2 w-2 rounded-full bg-amber-400" />
-          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+        <span className="absolute -top-2 left-10 h-4 w-2 rounded-full bg-blue-200" />
+        <span className="absolute -top-2 right-10 h-4 w-2 rounded-full bg-blue-200" />
+        <div className="mb-2 flex items-center justify-between border-b border-blue-100 pb-2">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-xl font-extrabold leading-none text-blue-600">20</span>
+            <span className="text-[8px] font-bold tracking-widest text-slate-500">DAY PLAN</span>
+          </div>
+          <CalendarDays className="h-4 w-4 text-blue-500" strokeWidth={1.8} />
         </div>
-        <p className="font-mono text-[11px] leading-relaxed">
-          <span className="text-pink-400">print</span>
-          <span className="text-slate-400">(</span>
-          <span className="text-emerald-300">&quot;Hello, World!&quot;</span>
-          <span className="text-slate-400">)</span>
-          <span
-            className="ml-1 inline-block h-3 w-1.5 animate-pulse bg-blue-300"
-            aria-hidden="true"
-          />
-        </p>
+        <div className="grid grid-cols-5 gap-1">
+          {Array.from({ length: 20 }, (_, index) => (
+            <span
+              key={index}
+              className={`flex h-4 items-center justify-center rounded text-[9px] font-bold ${
+                index === 19 ? "bg-blue-600 text-white shadow-sm" : "bg-blue-50 text-blue-600"
+              }`}
+            >
+              {index + 1}
+            </span>
+          ))}
+        </div>
       </motion.div>
-    </div>
-  );
-}
-
-function EndGameIllustration() {
-  return (
-    <div
-      className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, ${BLUE_DARK}, ${BLUE_MID} 55%, ${BLUE_LIGHT})`,
-      }}
-    >
-      <SparkleDots />
-      <motion.div
-        className="relative flex h-24 w-24 items-center justify-center rounded-full border border-white/30 bg-white/15"
-        whileHover={{ y: -14, scale: 1.12 }}
-        whileTap={{ scale: 0.92 }}
-        transition={{ type: "spring", stiffness: 260, damping: 16 }}
-      >
-        {[
-          { top: "4%", left: "82%" },
-          { top: "78%", left: "10%" },
-          { top: "14%", left: "6%" },
-          { top: "50%", left: "92%" },
-          { top: "88%", left: "70%" },
-        ].map((pos) => (
-          <motion.span
-            key={`${pos.top}-${pos.left}`}
-            className="absolute h-1.5 w-1.5 rounded-full bg-white opacity-0"
-            style={{ top: pos.top, left: pos.left }}
-            whileHover={{ opacity: 1, scale: 1.8 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            aria-hidden="true"
-          />
-        ))}
-        <Trophy
-          className="h-12 w-12 text-white drop-shadow"
-          fill="white"
-          fillOpacity={0.15}
-          aria-hidden="true"
-        />
-      </motion.div>
-      <span
-        className="rounded-full bg-white px-3 py-1 text-[10px] font-bold shadow-md"
-        style={{ color: BLUE_DARK }}
-      >
-        Result Confirmed
-      </span>
     </div>
   );
 }
 
 const FEATURES_LIST = [
+  {
+    title: "20 Day Plan",
+    description:
+      "දින 20ක සැලැස්මක් ඔස්සේ ICT විභාගයට සූදානම් වන්න.",
+    Illustration: TwentyDayPlanIllustration,
+    animation: "",
+    emoji: "🗓️",
+    span: "lg:col-span-2",
+  },
   {
     title: "Theory And Revision",
     description: "සියලු පාඩම වල කරුණු මුල සිට අංගසම්පුර්ණ ව ඉගැන්වේ.",
@@ -332,34 +259,7 @@ const FEATURES_LIST = [
     Illustration: PaperIllustration,
     animation: "/animations/rank.tgs",
     emoji: "📝",
-    span: "lg:col-span-2",
-  },
-  {
-    title: "Speed Revision",
-    description:
-      "මුළු විෂය නිර්දේශයම වේගයෙන් ආවරණය කර විශිෂ්ට ප්‍රතිඵලයක් කරා යාම.",
-    Illustration: SpeedRevisionIllustration,
-    animation: "/animations/revision.tgs",
-    emoji: "⚡",
-    span: "lg:col-span-2",
-  },
-  {
-    title: "Hello World ICT",
-    description:
-      "විභාගයට ආසන්න කාලසීමාවේදී උදැසන සිදුකරන විශේෂ ප්‍රශ්නපත්‍ර සාකච්චාව.",
-    Illustration: HelloWorldIllustration,
-    animation: "/animations/tmrexam.tgs",
-    emoji: "💻",
-    span: "lg:col-span-3",
-  },
-  {
-    title: "End Game",
-    description:
-      "දෙවන පත්‍රයට අනිවාර්ය ප්‍රශ්නවල Theory කොටස් වෙන වෙනම උගන්වයි.",
-    Illustration: EndGameIllustration,
-    animation: "/animations/pulsepaper.tgs",
-    emoji: "🏆",
-    span: "lg:col-span-3",
+    span: "sm:col-span-2 lg:col-span-2",
   },
 ];
 
@@ -437,7 +337,7 @@ export function Features() {
               <h3 className="text-xl font-bold text-slate-900">{programme.name}</h3>
               <p lang="si" className="mt-1 text-lg font-medium text-blue-600">{programme.sinhala}</p>
               <p lang="en" className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">{programme.description}</p>
-              <a href={`${SITE.whatsapp}?text=${encodeURIComponent(`Hi Sayuru, I would like to know about ${programme.level} ICT online classes and the timetable.`)}`} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-500">
+              <a href={`${SITE.whatsapp}?text=${encodeURIComponent(`${SITE.messageGreeting} I would like to know about ${programme.level} ICT online classes and the timetable.`)}`} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-500">
                 Ask about {programme.level} ICT <span aria-hidden="true">↗</span>
               </a>
             </article>

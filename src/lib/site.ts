@@ -1,8 +1,9 @@
 export const SITE = {
   name: "Sayuru Amarasinghe",
   shortName: "Sayuru ICT",
+  messageGreeting: "Hi Mr. Sayuru,",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://ict.sayuru.me").replace(/\/+$/, ""),
-  email: "sayuru@codezela.com",
+  email: "contact@sayuru.me",
   phone: "071 288 3835",
   phoneHref: "+94712883835",
   whatsapp: "https://wa.me/94712883835",

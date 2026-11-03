@@ -25,7 +25,7 @@ function FeedbackForm() {
     e.preventDefault();
     const stars = rating > 0 ? "⭐".repeat(rating) : "Not rated";
     const subject = encodeURIComponent(`Student feedback from ${name}`);
-    const body = encodeURIComponent(`Rating: ${stars}\n\n${message}\n\n- ${name}`);
+    const body = encodeURIComponent(`${SITE.messageGreeting}\n\nRating: ${stars}\n\n${message}\n\n- ${name}`);
     window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }

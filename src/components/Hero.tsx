@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getWordVariants } from "@/components/ui/section-header";
 import { useIsDesktop } from "@/lib/utils";
 import { SITE } from "@/lib/site";
+import { useSmoothHashClick } from "@/components/Navbar";
 
 const ROTATING_PHRASES = ["Clear Theory", "Paper Class Ranking", "Real A Results"];
 
@@ -118,6 +119,7 @@ function HeroChipBadge() {
 
 export function Hero() {
   const variants = getWordVariants(useIsDesktop());
+  const handleHashClick = useSmoothHashClick();
 
   return (
     <section
@@ -179,10 +181,10 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white py-1.5 pr-4 pl-1.5 shadow-[0_2px_10px_rgba(15,23,42,0.06)]"
           >
             <span className="rounded-full bg-gradient-to-r from-blue-600 to-blue-400 px-3 py-1 text-[11px] font-bold text-white shadow-[0_2px_8px_rgba(37,99,235,0.45)]">
-              2027
+              O/L
             </span>
             <span className="text-[12px] font-semibold text-slate-600">
-              A/L Revision Registration Open Now
+              20 Day Plan Registration Open Now
             </span>
           </motion.div>
 
@@ -253,12 +255,11 @@ export function Hero() {
             className="mb-10 w-auto"
           >
             <a
-              href={SITE.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#flow"
+              onClick={(event) => handleHashClick(event, "#flow")}
               className="flex h-12 w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 px-8 text-[15px] font-bold text-white shadow-xl shadow-blue-600/20 transition-all hover:opacity-90 active:scale-95"
             >
-              Join Online Classes <span aria-hidden="true">↗</span>
+              Join Online Classes <span aria-hidden="true">↓</span>
             </a>
           </motion.div>
         </div>

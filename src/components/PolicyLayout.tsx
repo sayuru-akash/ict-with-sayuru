@@ -13,6 +13,7 @@ const LENIS_OPTIONS = { duration: 1.2 };
 
 const LEGAL_LINKS = [
   { to: "/privacy-policy", label: "Privacy Policy & Terms" },
+  { to: "/terms-and-conditions", label: "Terms and Conditions" },
   { to: "/refund-policy", label: "Refund Policy" },
 ];
 
@@ -157,7 +158,7 @@ export function PolicyLayout({
               </div>
             </nav>
 
-            <div className="max-w-3xl">{children}</div>
+            <div className="max-w-3xl text-slate-600">{children}</div>
           </div>
         </main>
         <Footer />

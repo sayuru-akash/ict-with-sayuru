@@ -21,7 +21,8 @@ Preserve these decisions unless the user explicitly changes them:
 - Both **A/L and O/L** must remain represented in programme cards, enrolment and course metadata.
 - Keep the current student reviews until the owner requests replacement. They are retained content, not newly verified testimonials.
 - The student results section and its navigation links stay removed. `Results.tsx` and `public/results/results.json` remain unused source/data; do not reintroduce them or delete them as incidental cleanup.
-- The current A/L schedules are retained content. O/L uses a timetable enquiry; do not invent dates, times, fees, results or qualifications.
+- The class cards are ordered: O/L 20 Day Plan, 2027 A/L, 2028 A/L, general O/L. The 2026 A/L card and published A/L schedules were removed at the owner's request. Regular A/L and O/L cards use WhatsApp timetable enquiries.
+- The O/L 20 Day Plan details come from the owner's poster: 20 days, Rs. 3,000 total fee, 8 short notes, special theory sessions and 5 years of past-paper practice. Keep these in `src/lib/programmes.ts`. Do not invent a starting date, timetable, payment method, guaranteed grade, or physical materials delivery.
 - Preserve approved Sinhala/English copy, counts, schedules, legal terms and marketing claims when the task does not authorize changing them. Report inconsistencies instead of silently rewriting owner decisions.
 - Use plain punctuation in new user-facing writing. Avoid en dashes and em dashes.
 
@@ -33,7 +34,8 @@ Read `src/lib/site.ts` for current public values. At the time of writing:
 - BSc (Hons) Software Engineering (UK).
 - **(Reading)** MSc in IT & Cyber Security (UK), not a completed MSc.
 - CEO at Codezela Technologies.
-- `sayuru@codezela.com`, `071 288 3835`, Facebook `ict.sayuru.me`.
+- `contact@sayuru.me`, `071 288 3835`, Facebook `ict.sayuru.me`.
+- Prepared WhatsApp enquiries and contact/feedback email drafts use `SITE.messageGreeting` ("Hi Mr. Sayuru,"). The login preview notice also addresses Mr. Sayuru. Keep the public name, branding, titles and metadata as Sayuru Amarasinghe.
 
 Do not substitute the previous template teacher's identity, degree, achievements, contacts, domain or backend. Identity edits must consider `site.ts`, `seo.ts`, relevant page copy, assets and the manifest together; not every string is centralized yet.
 
@@ -86,15 +88,15 @@ ESLint runs through the CLI with zero warnings allowed. Production builds must r
 | Root shell | `src/app/layout.tsx`: fonts, preloads, site schema, auth provider and toasts |
 | Public identity | `src/lib/site.ts`: name, qualifications, role, contact links and origin |
 | Search metadata | `src/lib/seo.ts`, `StructuredData.tsx`: per-route metadata and escaped JSON-LD |
-| Hero | `Hero.tsx`: responsive portrait, bilingual headline and registration CTA |
+| Hero | `Hero.tsx`: responsive portrait, bilingual headline and CTA scrolling to `#flow` |
 | Programmes / learning features | `Features.tsx`: `#programmes`, `#al-ict`, `#ol-ict` and learning cards |
 | Teacher | `AboutTeacher.tsx`, `ui/macbook-terminal.tsx`: original photo and animated profile |
-| Classes | `ClassLocations.tsx`: online A/L offerings, schedule dialogs and O/L enquiry |
+| Classes | `ClassLocations.tsx`, `lib/programmes.ts`: O/L 20 Day Plan popup and regular A/L/O/L WhatsApp enquiries |
 | Reviews | `Testimonials.tsx`, `public/comments/comments.json`: local review fetch and marquees |
 | Contact | `Faqs.tsx`, `FeedbackSection.tsx`: FAQ state and email-draft forms |
 | Shared navigation | `Navbar.tsx`, `Footer.tsx`: links, active sections, mobile menu and install UI |
 | Shared UI | `components/ui/`: Radix dialogs, animated section headers and terminal presentation |
-| Policies | Policy route files and `PolicyLayout.tsx`: content, contact details and English main content |
+| Policies | `/privacy-policy`, `/refund-policy`, `/terms-and-conditions` and `PolicyLayout.tsx`: content, contact details and English main content |
 | Authentication | `context/AuthContext.tsx`, `lib/api.ts`, `app/auth/`: optional API/session plumbing |
 | Styling / fonts | `app/globals.css`, `app/fonts.css`, `public/fonts/`: visual tokens, motion and local fonts |
 | Crawl / install metadata | `app/sitemap.ts`, `app/robots.ts`, `public/manifest.webmanifest` |
@@ -127,6 +129,7 @@ The root page is a server entry; the landing composition and interactive section
 
 - Use `pageMetadata` and `SITE.url` for public route metadata. Keep titles/descriptions specific to the page and canonical/social URLs absolute.
 - Preserve initial-head metadata behavior (`htmlLimitedBots`) and JSON-LD escaping in `StructuredData.tsx`.
+- Public routes include the homepage, privacy policy, refund policy and terms and conditions. Keep all four in the sitemap and HTTP SEO checks.
 - Site-wide schema describes the organization, person and website. The two course entries belong on the homepage; legal routes have their own page/breadcrumb data.
 - Mark the completed BSc as a credential; keep the reading MSc in descriptive text, not as an awarded degree.
 - Do not add fabricated reviews, aggregate ratings, prices, credentials, location claims or FAQ rich-result promises. Do not claim a guaranteed ranking or carousel eligibility.

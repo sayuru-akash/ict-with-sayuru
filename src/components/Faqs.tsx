@@ -177,7 +177,7 @@ function ContactTerminalForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const subject = encodeURIComponent(`Website enquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n- ${name} (${email})`);
+    const body = encodeURIComponent(`${SITE.messageGreeting}\n\n${message}\n\n- ${name} (${email})`);
     window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
     setSent(true);
   }
