@@ -3,6 +3,7 @@ export const OL_TWENTY_DAY_PLAN = {
   id: "ol-20-day-plan",
   name: "O/L ICT 20 Day Plan",
   campaignName: "20 Day F to A Plan",
+  registrationUrl: "https://wa.link/1qdj47",
   durationDays: 20,
   fee: 3000,
   shortNotes: 8,

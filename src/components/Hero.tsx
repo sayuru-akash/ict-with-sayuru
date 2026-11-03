@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getWordVariants } from "@/components/ui/section-header";
 import { useIsDesktop } from "@/lib/utils";
 import { SITE } from "@/lib/site";
+import { OL_TWENTY_DAY_PLAN as PLAN } from "@/lib/programmes";
 import { useSmoothHashClick } from "@/components/Navbar";
 
 const ROTATING_PHRASES = ["Clear Theory", "Paper Class Ranking", "Real A Results"];
@@ -147,11 +148,15 @@ export function Hero() {
         </div>
 
         <div className="relative z-10 flex max-w-xl flex-col items-center text-center xl:items-start xl:text-left">
-          <motion.div
+          <motion.a
+            href={PLAN.registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Register for ${PLAN.campaignName} on WhatsApp`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white py-1.5 pr-4 pl-1.5 shadow-[0_2px_10px_rgba(15,23,42,0.06)]"
+            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white py-1.5 pr-4 pl-1.5 shadow-[0_2px_10px_rgba(15,23,42,0.06)] transition-colors hover:border-blue-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
           >
             <span className="rounded-full bg-gradient-to-r from-blue-600 to-blue-400 px-3 py-1 text-[11px] font-bold text-white shadow-[0_2px_8px_rgba(37,99,235,0.45)]">
               O/L
@@ -159,7 +164,7 @@ export function Hero() {
             <span className="text-[12px] font-semibold text-slate-600">
               20 Day Plan Registration Open Now
             </span>
-          </motion.div>
+          </motion.a>
 
           <p className="mb-4 text-sm font-semibold tracking-wide text-blue-600 sm:text-base">
             {SITE.name} <span lang="si" className="text-slate-500">· සයුරු අමරසිංහ</span>

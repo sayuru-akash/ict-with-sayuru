@@ -5,6 +5,7 @@ import "./fonts.css";
 import "./globals.css";
 import { SITE_JSON_LD, ROOT_METADATA } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
+import { ProgrammePromotion } from "@/components/ProgrammePromotion";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -72,6 +73,7 @@ export default function RootLayout({
             }}
           />
           {children}
+          <ProgrammePromotion />
         </AuthProvider>
       </body>
     </html>

@@ -14,9 +14,7 @@ import {
 import { SectionHeader } from "@/components/ui/section-header";
 
 const PLAN_FEE = `Rs. ${PLAN.fee.toLocaleString("en-LK")}`;
-const planRegistrationUrl = `${SITE.whatsapp}?text=${encodeURIComponent(
-  `${SITE.messageGreeting} I would like to register for the O/L ICT 20 Day Plan (${PLAN_FEE} total). Please share the starting date, timetable and registration details.`
-)}`;
+
 
 const ENQUIRIES = [
   { tag: "2027 A/L ICT", title: "2027 A/L ICT - Online", sinhala: "උසස් පෙළ 2027 · මුළු දිවයිනටම", level: "2027 A/L", description: "Contact us for 2027 A/L class details and the timetable." },
@@ -72,7 +70,7 @@ function TwentyDayPlanModal() {
             </div>
             <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-semibold">All {PLAN.durationDays} days</span>
           </div>
-          <a href={planRegistrationUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+          <a href={PLAN.registrationUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <MessageCircle className="h-4 w-4" aria-hidden="true" />Register on WhatsApp<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
           <p className="mt-2 text-center text-xs text-blue-100">{SITE.phone}</p>

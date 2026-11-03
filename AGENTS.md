@@ -22,7 +22,7 @@ Preserve these decisions unless the user explicitly changes them:
 - Reviews were replaced with the owner-supplied 15 entries. Keep each name, city and quote exactly as supplied, including references to CCA, data study and internships. Use a general learning-experiences heading; do not relabel these as verified A/L-specific experiences.
 - The student results section and its navigation links stay removed. `Results.tsx` and `public/results/results.json` remain unused source/data; do not reintroduce them or delete them as incidental cleanup.
 - The class cards are ordered: O/L 20 Day Plan, 2027 A/L, 2028 A/L, general O/L. The 2026 A/L card and published A/L schedules were removed at the owner's request. Regular A/L and O/L cards use WhatsApp timetable enquiries.
-- The O/L 20 Day Plan details come from the owner's poster: 20 days, Rs. 3,000 total fee, 8 short notes, special theory sessions and 5 years of past-paper practice. Keep these in `src/lib/programmes.ts`. Do not invent a starting date, timetable, payment method, guaranteed grade, or physical materials delivery.
+- The O/L 20 Day Plan details come from the owner's poster: 20 days, Rs. 3,000 total fee, 8 short notes, special theory sessions and 5 years of past-paper practice. Keep these in `src/lib/programmes.ts`. The campaign registration URL is `https://wa.link/1qdj47`; the timed promotion, hero registration notice and programme popup share `OL_TWENTY_DAY_PLAN.registrationUrl`. Do not invent a starting date, timetable, payment method, guaranteed grade, or physical materials delivery.
 - Owner-approved copy uses LMS for recording access and System for payments. Payment verification is stated as within 2 days. The refund policy uses a 3-day change-of-mind cancellation window and a 3-working-day review target; bank/provider settlement timing and mandatory consumer rights remain separate.
 - Preserve approved Sinhala/English copy, counts, schedules, legal terms and marketing claims when the task does not authorize changing them. Report inconsistencies instead of silently rewriting owner decisions.
 - Use plain punctuation in new user-facing writing. Avoid en dashes and em dashes.
@@ -86,10 +86,11 @@ ESLint runs through the CLI with zero warnings allowed. Production builds must r
 | --- | --- |
 | Server homepage | `src/app/page.tsx`: inject homepage JSON-LD and render `HomePage` |
 | Landing composition | `src/components/HomePage.tsx`: section order, Lenis root and initial hash scrolling |
-| Root shell | `src/app/layout.tsx`: fonts, preloads, site schema, auth provider and toasts |
+| Root shell | `src/app/layout.tsx`: fonts, preloads, site schema, auth provider, toasts and the global campaign promotion |
 | Public identity | `src/lib/site.ts`: name, qualifications, role, contact links and origin |
 | Search metadata | `src/lib/seo.ts`, `StructuredData.tsx`: per-route metadata and escaped JSON-LD |
-| Hero | `Hero.tsx`: responsive portrait, bilingual headline and CTA scrolling to `#flow` |
+| Hero | `Hero.tsx`: responsive portrait, bilingual headline, campaign registration notice and CTA scrolling to `#flow` |
+| Promotion | `ProgrammePromotion.tsx`: root-layout ad on all four public routes after 4 seconds, once per session, plus a persistent reopen button; defers while another dialog is open or a field is being edited |
 | Programmes / learning features | `Features.tsx`: `#programmes`, `#al-ict`, `#ol-ict` and learning cards |
 | Teacher | `AboutTeacher.tsx`, `ui/macbook-terminal.tsx`: original photo and animated profile |
 | Classes | `ClassLocations.tsx`, `lib/programmes.ts`: O/L 20 Day Plan popup and regular A/L/O/L WhatsApp enquiries |
@@ -122,6 +123,7 @@ The root page is a server entry; the landing composition and interactive section
 - Preserve Sayuru's face, age, expression, skin tone and likeness when editing or generating imagery. Inspect the result. Do not assert that a generated portrait is pixel-identical to its reference.
 - Keep AVIF/WebP `srcSet`, `sizes`, intrinsic dimensions and the hero preload consistent when changing portrait assets.
 - Preserve the SA monogram, app icons, local fonts, font licenses, TGS illustrations and player unless the task changes them. Do not hotlink replacement assets or remove runtime-critical files as cleanup.
+- The programme ad uses the generated `20-day-plan-promo` AVIF/WebP illustration. Its generation prompt and asset details are in `docs/assets/20-day-plan-promotion.md`. Keep factual copy in HTML and preserve transparency.
 - Capture real UI screenshots after fonts, images and relevant animations settle. Wait for the teacher terminal's complete presentation when documenting it.
 - Requested documentation screenshots belong in `docs/screenshots/`. Temporary QA captures, logs and scripts belong outside the repository unless the user requests committed artifacts.
 - Manifest screenshots are separate `public/screenshots/` assets. Keep their actual dimensions, manifest declarations and icon sizes in agreement.
@@ -156,6 +158,8 @@ The root page is a server entry; the landing composition and interactive section
 | Metadata / route / identity | Lint, typecheck, build and `check:seo` against the built site; inspect route-specific canonical/social/schema output |
 | Programme / contact / content | Check visible text and matching metadata/links; preserve unrelated fixtures and verify affected interactions |
 | Dependencies / deploy config | Fresh `npm ci`, lint, typecheck, build, production HTTP/SEO smoke and appropriately scoped audits |
+
+The automatic promotion uses the session key `sayuru:20-day-plan-promotion:v1`. Test fresh-session timing, dismissal and no-repeat behavior; seed this key to `shown` when checking unrelated dialogs. Keep its overlay above cookie consent.
 
 There is no dedicated unit/E2E runner in the repository. `check:seo` is an HTTP contract check, not browser coverage or proof of mail delivery, live indexing, ranking or provider integration.
 

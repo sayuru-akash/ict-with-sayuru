@@ -37,7 +37,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 ## Screenshots
 
-Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes, student reviews and FAQs updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes, student reviews, FAQs and campaign promotion updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
 
 ### A/L and O/L programmes
 
@@ -67,6 +67,12 @@ The supplied square graduation photo sits beside an animated terminal displaying
 
 ![Teacher profile with the updated square graduation photograph and animated terminal](docs/screenshots/teacher-profile.png)
 
+### Campaign popup promotion
+
+The generated study illustration sits beside live programme details in a dismissible popup. It appears after four seconds on public pages, once per session, and can be reopened with the floating campaign button.
+
+![20 Day F to A Plan popup with generated artwork, price and WhatsApp registration](docs/screenshots/20-day-plan-promotion.png)
+
 ### Student reviews
 
 The 15 supplied reviews keep their original wording, student names and cities. Scrolling rows can be paused, and the read-all dialog shows every full review. Reduced-motion preferences stop automatic scrolling.
@@ -74,6 +80,8 @@ The 15 supplied reviews keep their original wording, student names and cities. S
 ![Student reviews with name and city attributions and pause and read-all controls](docs/screenshots/student-reviews.png)
 
 ### Online classes
+
+Every public page highlights the campaign in a popup ad after four seconds, once per browsing session. The floating “20 Day F to A Plan” button can reopen it at any time. It waits while another dialog is open or a form field is being edited. The ad, hero registration notice and plan popup all link to [the campaign registration URL](https://wa.link/1qdj47).
 
 The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000 total fee, eight short notes, theory sessions and past-paper practice. Regular 2027 A/L, 2028 A/L and O/L cards open WhatsApp enquiries for details and timetables.
 
@@ -94,6 +102,7 @@ The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000
 | Learning features | Theory and revision, paper practice and the 20 Day Plan |
 | Teacher profile | Updated square graduation photograph and an automatically typed terminal presentation |
 | Online classes | O/L 20 Day Plan details and registration, plus 2027 A/L, 2028 A/L and O/L timetable enquiries |
+| Programme promotion | Dismissible 20 Day F to A Plan ad after four seconds, once per session, with a shared campaign WhatsApp link |
 | Student reviews | 15 owner-supplied reviews with names and cities, pausable scrolling rows and a read-all dialog |
 | FAQs and feedback | Wide FAQ accordion with WhatsApp support; separate feedback form with validation, rating and an email draft |
 | Navigation | Desktop navigation, a mobile menu and Lenis anchor scrolling |
@@ -215,7 +224,7 @@ ict-with-sayuru/
 | `/sitemap.xml` | Four public routes and homepage image references |
 | `/robots.txt` | Crawl rules and the public sitemap location |
 
-`src/app/layout.tsx` supplies self-hosted fonts, resource hints, site-wide structured data, authentication context and toasts. `HomePage.tsx` orders the landing sections and owns the Lenis root. Shared dialog, section-header and terminal components live in `src/components/ui/`.
+`src/app/layout.tsx` supplies self-hosted fonts, resource hints, site-wide structured data, authentication context, toasts and the campaign promotion on public pages. `HomePage.tsx` orders the landing sections and owns the Lenis root. Shared dialog, section-header and terminal components live in `src/components/ui/`.
 
 ### Where to make common changes
 
@@ -225,6 +234,7 @@ ict-with-sayuru/
 | Hero portrait or responsive image sizing | `Hero.tsx` and matching preload hints in `app/layout.tsx` |
 | A/L and O/L programme cards | `Features.tsx`; keep matching course data in `lib/seo.ts` |
 | Class enquiries and O/L 20 Day Plan | `ClassLocations.tsx`, `lib/programmes.ts` |
+| Timed campaign promotion | `ProgrammePromotion.tsx`, mounted in the root layout on public routes; reset `sayuru:20-day-plan-promotion:v1` in session storage to preview again |
 | Animated profile presentation | `AboutTeacher.tsx` and `ui/macbook-terminal.tsx` |
 | Student reviews | `public/comments/comments.json` and `Testimonials.tsx` |
 | FAQs, WhatsApp support or feedback | `Faqs.tsx` and `FeedbackSection.tsx` |
@@ -236,6 +246,8 @@ ict-with-sayuru/
 ## Content and visual assets
 
 **Photography:** `sayuru-amarasinghe-profile.webp` is the supplied square graduation photograph used in About and person metadata. Its 480, 768 and 1071 pixel AVIF/WebP versions preserve the square composition without upscaling. The earlier `sayuru-amarasinghe-original.webp` photograph remains preserved. The transparent `sayuru-amarasinghe.webp` cutout is used in the hero and social card. Responsive AVIF and WebP variants reduce downloads. Portrait changes must preserve Sayuru's likeness; the generated cutout is not described as pixel-identical to the original.
+
+**Promotion illustration:** `public/images/20-day-plan-promo` contains transparent 480 and 960 pixel AVIF/WebP variants of the generated study-kit artwork. Campaign text and pricing remain live HTML. See the [generation prompt and asset notes](docs/assets/20-day-plan-promotion.md).
 
 **Branding and fonts:** `public/logos/sayuru-mark.svg` is the source SA monogram. Icons are local PNG/ICO variants. `src/app/fonts.css` defines the self-hosted English and Sinhala families; English font licenses are in `public/fonts/latin/`. TGS illustrations use the local player in `public/lib/`.
 
@@ -291,6 +303,8 @@ Push the intended commit to GitHub, then import **`sayuru-akash/ict-with-sayuru`
 A local commit, a Git push, a successful build and a verified live deployment are separate outcomes. Writing documentation does not connect Vercel, change DNS or publish the site.
 
 ## Verification and current limits
+
+**Campaign verification, 3 November 2026:** lint, TypeScript, production build and SEO checks passed for all four public pages. Browser checks covered delayed opening, session persistence, manual reopening, generated-image loading, dialog deferral and the campaign link at desktop and mobile sizes down to 320 pixels. Link activation was intercepted locally; no WhatsApp message was sent. The production audit reported zero findings; the full audit retained 14 moderate development-tooling advisories.
 
 **Verified baseline, 1 November 2026:** clean dependency installation, zero-warning lint, TypeScript, production build, HTTP SEO checks and desktop/mobile smoke checks passed. The tests retained reviews and confirmed that student results were absent.
 
