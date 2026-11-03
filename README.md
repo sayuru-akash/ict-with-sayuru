@@ -19,7 +19,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 **Website domain:** [ict.sayuru.me](https://ict.sayuru.me) · **Repository:** [sayuru-akash/ict-with-sayuru](https://github.com/sayuru-akash/ict-with-sayuru)
 
-> This is the public tuition website. WhatsApp registration and a feedback email draft is available; the student login is a preview. A dashboard, payments, recordings and marks tracking are not implemented in this frontend.
+> This is the public tuition website. WhatsApp registration and a feedback email draft are available; the student login is a preview. A dashboard, payments, recordings and marks tracking are not implemented in this frontend.
 
 ## Contents
 
@@ -88,14 +88,14 @@ The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000
 | Learning features | Theory and revision, paper practice and the 20 Day Plan |
 | Teacher profile | Updated square graduation photograph and an automatically typed terminal presentation |
 | Online classes | O/L 20 Day Plan details and registration, plus 2027 A/L, 2028 A/L and O/L timetable enquiries |
-| Student reviews | Two scrolling rows loaded from the retained local review dataset |
+| Student reviews | 15 owner-supplied reviews with names and cities, pausable scrolling rows and a read-all dialog |
 | FAQs and feedback | Wide FAQ accordion with WhatsApp support; separate feedback form with validation, rating and an email draft |
 | Navigation | Desktop navigation, a mobile menu and Lenis anchor scrolling |
 | Policies | Privacy, terms and conditions, and refund pages with shared layout and contact details |
 | App presentation | Manifest, favicons, install icons, browser-dependent installation guidance and saved cookie preferences |
 | Search and sharing | Route-specific metadata, JSON-LD, social previews, sitemap and crawler directives |
 
-**Owner-approved content boundaries:** keep both A/L and O/L, retain the current reviews until replacement is requested, and keep the student results section removed. `Results.tsx` and its dataset remain unused source files, not a published section.
+**Owner-approved content boundaries:** keep both A/L and O/L, preserve the 15 replacement reviews exactly as supplied, and keep the student results section removed. `Results.tsx` and its dataset remain unused source files, not a published section.
 
 ## Quick start
 
@@ -233,7 +233,7 @@ ict-with-sayuru/
 
 **Branding and fonts:** `public/logos/sayuru-mark.svg` is the source SA monogram. Icons are local PNG/ICO variants. `src/app/fonts.css` defines the self-hosted English and Sinhala families; English font licenses are in `public/fonts/latin/`. TGS illustrations use the local player in `public/lib/`.
 
-**Datasets:** `public/comments/comments.json` contains the retained reviews. Do not invent testimonials or present this dataset as newly verified. The unused results data and result component are preserved without rendering them.
+**Datasets:** `public/comments/comments.json` contains 15 owner-supplied reviews with `name`, `location` and `comment`. They are statically imported for initial rendering; students' full quotes and cities appear in scrolling cards and a read-all dialog. Do not invent testimonials or present this dataset as newly verified. The unused results data and result component are preserved without rendering them.
 
 **Screenshots:** keep documentation captures in `docs/screenshots/`. The app's install screenshots are separate files in `public/screenshots/`; if those change, update their declared dimensions in the manifest too.
 

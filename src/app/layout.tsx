@@ -49,12 +49,6 @@ export default function RootLayout({
           imageSizes="(min-width: 1280px) 516px, (min-width: 468px) 420px, calc(100vw - 48px)"
           fetchPriority="high"
         />
-        <link
-          rel="preload"
-          as="fetch"
-          crossOrigin="anonymous"
-          href="/comments/comments.json"
-        />
         <StructuredData data={SITE_JSON_LD} />
       </head>
       <body>

@@ -313,7 +313,9 @@
   .animate-magic-border,
   .macbook-glow,
   .orbit-spinner,
-  .orbit-bill {
+  .orbit-bill,
+  .animate-marquee,
+  .animate-marquee-reverse {
     animation: none !important;
   }
 }
@@ -323,6 +325,10 @@
 }
 .animate-marquee-reverse {
   animation: 45s linear infinite reverse marquee-scroll;
+}
+#student-review-rows .review-row:hover .review-track,
+#student-review-rows .review-row:focus-within .review-track {
+  animation-play-state: paused;
 }
 @keyframes marquee-scroll {
   0% {

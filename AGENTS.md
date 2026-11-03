@@ -19,7 +19,7 @@ This is Sayuru Amarasinghe's public **online A/L and O/L ICT tuition website** f
 Preserve these decisions unless the user explicitly changes them:
 
 - Both **A/L and O/L** must remain represented in programme cards, enrolment and course metadata.
-- Keep the current student reviews until the owner requests replacement. They are retained content, not newly verified testimonials.
+- Reviews were replaced with the owner-supplied 15 entries. Keep each name, city and quote exactly as supplied, including references to CCA, data study and internships. Use a general learning-experiences heading; do not relabel these as verified A/L-specific experiences.
 - The student results section and its navigation links stay removed. `Results.tsx` and `public/results/results.json` remain unused source/data; do not reintroduce them or delete them as incidental cleanup.
 - The class cards are ordered: O/L 20 Day Plan, 2027 A/L, 2028 A/L, general O/L. The 2026 A/L card and published A/L schedules were removed at the owner's request. Regular A/L and O/L cards use WhatsApp timetable enquiries.
 - The O/L 20 Day Plan details come from the owner's poster: 20 days, Rs. 3,000 total fee, 8 short notes, special theory sessions and 5 years of past-paper practice. Keep these in `src/lib/programmes.ts`. Do not invent a starting date, timetable, payment method, guaranteed grade, or physical materials delivery.
@@ -93,7 +93,7 @@ ESLint runs through the CLI with zero warnings allowed. Production builds must r
 | Programmes / learning features | `Features.tsx`: `#programmes`, `#al-ict`, `#ol-ict` and learning cards |
 | Teacher | `AboutTeacher.tsx`, `ui/macbook-terminal.tsx`: original photo and animated profile |
 | Classes | `ClassLocations.tsx`, `lib/programmes.ts`: O/L 20 Day Plan popup and regular A/L/O/L WhatsApp enquiries |
-| Reviews | `Testimonials.tsx`, `public/comments/comments.json`: local review fetch and marquees |
+| Reviews | `Testimonials.tsx`, `public/comments/comments.json`: statically imported owner-supplied reviews, pausable marquees and a read-all dialog |
 | FAQs / feedback | `Faqs.tsx`: wide FAQ accordion and WhatsApp support; `FeedbackSection.tsx`: separate feedback email draft |
 | Shared navigation | `Navbar.tsx`, `Footer.tsx`: links, active sections, mobile menu and install UI |
 | Shared UI | `components/ui/`: Radix dialogs, animated section headers and terminal presentation |
@@ -113,7 +113,7 @@ The root page is a server entry; the landing composition and interactive section
 - Preserve Sinhala glyph support, responsive wrapping, useful image alt text, labels, focus behavior, dialog titles/descriptions and mobile-menu dismissal.
 - Preserve reduced-motion handling. Do not introduce layout shifts or animation-heavy dependencies for a small change.
 - In tests, validate forms and inspect prepared link targets without sending messages or opening external account workflows unnecessarily.
-- The review JSON is an array with `name`, `gender`, `comment` and optional `time`. Preserve its actual shape; do not assume the old template's unrelated schema.
+- The review JSON is an array of 15 entries with `name`, `location` and `comment`. It is statically imported for initial rendering. Do not infer genders, add ratings/dates or rewrite quotes. Marquee copies are decorative and hidden from assistive technology; preserve pause, read-all and reduced-motion support.
 
 ### Photos, assets and screenshots
 
