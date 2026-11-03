@@ -12,7 +12,7 @@ import { SectionBadge } from "@/components/ui/section-header";
 const LENIS_OPTIONS = { duration: 1.2 };
 
 const LEGAL_LINKS = [
-  { to: "/privacy-policy", label: "Privacy Policy & Terms" },
+  { to: "/privacy-policy", label: "Privacy Policy" },
   { to: "/terms-and-conditions", label: "Terms and Conditions" },
   { to: "/refund-policy", label: "Refund Policy" },
 ];

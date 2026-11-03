@@ -44,63 +44,36 @@ function RotatingPhrase() {
   );
 }
 
-function HeroChipIcon({ className }: { className?: string }) {
+function HeroAwardIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
+    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
       <defs>
-        <linearGradient
-          id="hero-chip-gradient"
-          x1="4"
-          y1="4"
-          x2="28"
-          y2="28"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0" stopColor="#60a5fa" />
+        <linearGradient id="hero-award-gradient" x1="9" y1="6" x2="29" y2="32" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#60a5fa" />
+          <stop offset="0.5" stopColor="#2563eb" />
           <stop offset="1" stopColor="#4338ca" />
         </linearGradient>
       </defs>
-      <g
-        stroke="url(#hero-chip-gradient)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      >
-        <line x1="12" y1="8" x2="12" y2="4" />
-        <line x1="20" y1="8" x2="20" y2="4" />
-        <line x1="12" y1="24" x2="12" y2="28" />
-        <line x1="20" y1="24" x2="20" y2="28" />
-        <line x1="8" y1="12" x2="4" y2="12" />
-        <line x1="8" y1="20" x2="4" y2="20" />
-        <line x1="24" y1="12" x2="28" y2="12" />
-        <line x1="24" y1="20" x2="28" y2="20" />
+      <path d="M12 32C5 28 3 19 7 11M28 32C35 28 37 19 33 11" fill="none" stroke="#60a5fa" strokeWidth="1.7" strokeLinecap="round" />
+      <g fill="url(#hero-award-gradient)">
+        <ellipse cx="6" cy="15" rx="2.1" ry="4" transform="rotate(-25 6 15)" />
+        <ellipse cx="6.5" cy="23" rx="2.1" ry="4" transform="rotate(-45 6.5 23)" />
+        <ellipse cx="11" cy="29.5" rx="2.1" ry="4" transform="rotate(-60 11 29.5)" />
+        <ellipse cx="34" cy="15" rx="2.1" ry="4" transform="rotate(25 34 15)" />
+        <ellipse cx="33.5" cy="23" rx="2.1" ry="4" transform="rotate(45 33.5 23)" />
+        <ellipse cx="29" cy="29.5" rx="2.1" ry="4" transform="rotate(60 29 29.5)" />
+        <path d="M16 27L14 37L20 33L26 37L24 27" />
+        <circle cx="20" cy="17" r="11" stroke="#dbeafe" strokeWidth="1.5" />
       </g>
-      <rect
-        x="8"
-        y="8"
-        width="16"
-        height="16"
-        rx="3.5"
-        fill="url(#hero-chip-gradient)"
-      />
-      <path
-        d="M12 20 H14 V14 H20"
-        fill="none"
-        stroke="white"
-        strokeOpacity="0.45"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="20" r="1.1" fill="white" fillOpacity="0.8" />
-      <circle cx="20" cy="14" r="1.1" fill="white" fillOpacity="0.8" />
-      <circle cx="14" cy="16" r="1.3" fill="white" fillOpacity="0.85" />
+      <circle cx="20" cy="17" r="8.5" fill="none" stroke="white" strokeOpacity="0.25" />
+      <path d="M17 14L20 12V23M17 23H23" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function HeroChipBadge() {
+function HeroAwardBadge() {
   return (
-    <span className="relative mx-3 -top-2 inline-flex h-10 w-10 items-center justify-center align-middle sm:mx-5 sm:-top-3 sm:h-12 sm:w-12">
+    <span className="relative mx-2 -top-1 inline-flex h-9 w-9 shrink-0 items-center justify-center align-middle sm:mx-3 sm:-top-2 sm:h-11 sm:w-11">
       <span
         className="absolute inset-0 -z-10 scale-110 rounded-2xl bg-[radial-gradient(circle,rgba(96,165,250,0.4)_0%,transparent_70%)] lg:bg-blue-400/40 lg:blur-lg"
         aria-hidden="true"
@@ -111,7 +84,7 @@ function HeroChipBadge() {
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <HeroChipIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+        <HeroAwardIcon className="h-7 w-7 sm:h-8 sm:w-8" />
       </motion.span>
     </span>
   );
@@ -208,6 +181,7 @@ export function Hero() {
               variants={variants}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               style={{ display: "inline-block", marginRight: "0.45em" }}
+              className="text-[0.9em] sm:text-[0.95em]"
             >
               ලංකාවේ
             </motion.span>
@@ -215,9 +189,10 @@ export function Hero() {
               variants={variants}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               style={{ display: "inline-flex", alignItems: "center" }}
+              className="text-[0.9em] sm:text-[0.95em]"
             >
-              හොඳම
-              <HeroChipBadge />
+              අංක එකේ
+              <HeroAwardBadge />
             </motion.span>
             <br />
             <motion.span

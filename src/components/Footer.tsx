@@ -162,7 +162,7 @@ const FOOTER_SOCIALS = [
 const FOOTER_CONTACT = [
   { href: `mailto:${SITE.email}`, label: SITE.email },
   { href: `tel:${SITE.phoneHref}`, label: SITE.phone },
-  { href: "#faqs", label: "Contact Sayuru" },
+  { href: SITE.whatsapp, label: "Contact us" },
 ];
 
 function FooterColumnHeading({ children }: { children: React.ReactNode }) {

@@ -8,7 +8,7 @@ import {
   PolicySection,
 } from "@/components/PolicyLayout";
 
-export const metadata = pageMetadata('Privacy Policy & Terms | Sayuru Amarasinghe', "Privacy policy and terms for Sayuru Amarasinghe's online A/L and O/L ICT classes in Sri Lanka. Read about data use, student information and contact details.", '/privacy-policy');
+export const metadata = pageMetadata('Privacy Policy | Sayuru Amarasinghe', "How Sayuru Amarasinghe handles personal information for online A/L and O/L ICT classes in Sri Lanka. Read about data use, privacy and contact details.", '/privacy-policy');
 
 const LAST_UPDATED = "November 2026";
 
@@ -31,12 +31,12 @@ const SECTIONS = [
 export default function PrivacyPolicyPage() {
   return (
     <PolicyLayout
-      title="Privacy Policy & Terms of Use"
-      description="This page explains how we handle your information and the terms that govern your use of our website, student dashboard, and Telegram channels."
+      title="Privacy Policy"
+      description="This page explains how we handle your information when you use our website or contact us about classes."
       lastUpdated={LAST_UPDATED}
       sections={SECTIONS}
     >
-      <StructuredData data={legalPageJsonLd('Privacy Policy & Terms', '/privacy-policy')} />
+      <StructuredData data={legalPageJsonLd('Privacy Policy', '/privacy-policy')} />
       <p className="rounded-2xl border border-blue-100 bg-blue-50 p-5 text-sm">
         For current class registration, programme access and study-material rules, read our{" "}
         <Link href="/terms-and-conditions" className="font-medium text-blue-600 underline underline-offset-2">Terms and Conditions</Link>.

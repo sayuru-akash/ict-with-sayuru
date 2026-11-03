@@ -14,4 +14,5 @@ export const SITE = {
   ],
   role: "CEO at Codezela Technologies",
   portrait: "/images/sayuru-amarasinghe.webp",
+  profilePortrait: "/images/sayuru-amarasinghe-profile.webp",
 } as const;

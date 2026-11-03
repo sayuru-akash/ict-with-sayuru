@@ -75,7 +75,7 @@ export const SITE_JSON_LD = {
       "@type": "Person", "@id": personId,
       name: SITE.name, alternateName: "සයුරු අමරසිංහ",
       jobTitle: ["ICT Lecturer", "CEO at Codezela Technologies"],
-      image: `${SITE.url}/images/sayuru-amarasinghe-original.webp`,
+      image: `${SITE.url}${SITE.profilePortrait}`,
       url: `${SITE.url}/#about-teacher`,
       description: `${SITE.qualifications.join(". ")}. ${SITE.role}.`,
       hasCredential: { "@type": "EducationalOccupationalCredential", name: SITE.qualifications[0], credentialCategory: "degree" },

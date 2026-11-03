@@ -19,7 +19,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 **Website domain:** [ict.sayuru.me](https://ict.sayuru.me) · **Repository:** [sayuru-akash/ict-with-sayuru](https://github.com/sayuru-akash/ict-with-sayuru)
 
-> This is the public tuition website. WhatsApp registration and email-draft forms are available; the student login is a preview. A dashboard, payments, recordings and marks tracking are not implemented in this frontend.
+> This is the public tuition website. WhatsApp registration and a feedback email draft is available; the student login is a preview. A dashboard, payments, recordings and marks tracking are not implemented in this frontend.
 
 ## Contents
 
@@ -37,7 +37,7 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 ## Screenshots
 
-Real browser captures of the local production build, refreshed on **1 November 2026**, with the teacher profile and online classes updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes and FAQs updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
 
 ### A/L and O/L programmes
 
@@ -63,9 +63,9 @@ Real browser captures of the local production build, refreshed on **1 November 2
 
 ### Teacher profile
 
-The original graduation photo sits beside an animated terminal displaying the teacher's qualifications, current studies and professional role.
+The supplied square graduation photo sits beside an animated terminal displaying the teacher's qualifications, current studies and professional role.
 
-![Teacher profile with original graduation photograph and animated terminal](docs/screenshots/teacher-profile.png)
+![Teacher profile with the updated square graduation photograph and animated terminal](docs/screenshots/teacher-profile.png)
 
 ### Online classes
 
@@ -73,9 +73,9 @@ The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000
 
 ![O/L 20 Day Plan and regular A/L and O/L class enquiries](docs/screenshots/online-classes.png)
 
-### FAQs and contact
+### FAQs and support
 
-![Sinhala FAQ accordion beside the terminal-style contact form](docs/screenshots/faqs-contact.png)
+![Wide Sinhala FAQ accordion with WhatsApp support](docs/screenshots/faqs-contact.png)
 
 </details>
 
@@ -86,10 +86,10 @@ The O/L 20 Day Plan appears first, with a programme popup covering its Rs. 3,000
 | Personal branding | Sayuru's portrait, SA monogram, qualifications, Codezela role and contact links |
 | Programmes | Separate A/L and O/L ICT cards with contextual WhatsApp enquiries |
 | Learning features | Theory and revision, paper practice and the 20 Day Plan |
-| Teacher profile | Original graduation photograph and an automatically typed terminal presentation |
+| Teacher profile | Updated square graduation photograph and an automatically typed terminal presentation |
 | Online classes | O/L 20 Day Plan details and registration, plus 2027 A/L, 2028 A/L and O/L timetable enquiries |
 | Student reviews | Two scrolling rows loaded from the retained local review dataset |
-| Contact and feedback | Required-field validation, a feedback rating selector and prepared email drafts |
+| FAQs and feedback | Wide FAQ accordion with WhatsApp support; separate feedback form with validation, rating and an email draft |
 | Navigation | Desktop navigation, a mobile menu and Lenis anchor scrolling |
 | Policies | Privacy, terms and conditions, and refund pages with shared layout and contact details |
 | App presentation | Manifest, favicons, install icons, browser-dependent installation guidance and saved cookie preferences |
@@ -202,7 +202,7 @@ ict-with-sayuru/
 | Route | Responsibility |
 | --- | --- |
 | `/` | Server entry injects homepage JSON-LD, then renders the client landing-page composition |
-| `/privacy-policy` | English privacy/terms content with its own metadata and breadcrumbs |
+| `/privacy-policy` | English privacy policy with its own metadata and breadcrumbs |
 | `/refund-policy` | English refund content with its own metadata and breadcrumbs |
 | `/terms-and-conditions` | Enrolment, programme fees, access, materials, conduct and consumer rights |
 | `/auth/callback` | Optional backend OAuth code exchange; marked `noindex` |
@@ -221,7 +221,7 @@ ict-with-sayuru/
 | Class enquiries and O/L 20 Day Plan | `ClassLocations.tsx`, `lib/programmes.ts` |
 | Animated profile presentation | `AboutTeacher.tsx` and `ui/macbook-terminal.tsx` |
 | Student reviews | `public/comments/comments.json` and `Testimonials.tsx` |
-| FAQs, contact or feedback | `Faqs.tsx` and `FeedbackSection.tsx` |
+| FAQs, WhatsApp support or feedback | `Faqs.tsx` and `FeedbackSection.tsx` |
 | Navigation / footer anchors | `Navbar.tsx`, `Footer.tsx` and matching section IDs |
 | Search metadata or social preview | `lib/seo.ts`, `StructuredData.tsx` and the social image |
 | Policy text | The relevant policy route and shared `PolicyLayout.tsx` |
@@ -229,7 +229,7 @@ ict-with-sayuru/
 
 ## Content and visual assets
 
-**Photography:** `sayuru-amarasinghe-original.webp` is the optimized supplied graduation photograph used in About. The transparent `sayuru-amarasinghe.webp` cutout is used in the hero and social card. Responsive AVIF and WebP variants reduce downloads. Portrait changes must preserve Sayuru's likeness; the generated cutout is not described as pixel-identical to the original.
+**Photography:** `sayuru-amarasinghe-profile.webp` is the supplied square graduation photograph used in About and person metadata. Its 480, 768 and 1071 pixel AVIF/WebP versions preserve the square composition without upscaling. The earlier `sayuru-amarasinghe-original.webp` photograph remains preserved. The transparent `sayuru-amarasinghe.webp` cutout is used in the hero and social card. Responsive AVIF and WebP variants reduce downloads. Portrait changes must preserve Sayuru's likeness; the generated cutout is not described as pixel-identical to the original.
 
 **Branding and fonts:** `public/logos/sayuru-mark.svg` is the source SA monogram. Icons are local PNG/ICO variants. `src/app/fonts.css` defines the self-hosted English and Sinhala families; English font licenses are in `public/fonts/latin/`. TGS illustrations use the local player in `public/lib/`.
 
@@ -291,7 +291,7 @@ A local commit, a Git push, a successful build and a verified live deployment ar
 | Boundary | Current state |
 | --- | --- |
 | Registration | Hero scrolls to the class cards; WhatsApp links include programme-specific enquiry drafts |
-| Contact / feedback | Opens the visitor's email application; does not confirm delivery or store messages on a server |
+| Contact / feedback | WhatsApp enquiries; feedback opens an email draft without confirming delivery or storing messages on a server |
 | Teacher terminal | Animated profile presentation; no interactive shell or remote command execution |
 | Login | Preview notification without an owned backend configuration |
 | Student portal | Dashboard, payments, recordings and marks screens are not implemented |

@@ -10,7 +10,7 @@ import {
 
 export const metadata = pageMetadata('Refund Policy | Sayuru Amarasinghe', "Refund eligibility, requests and contact information for Sayuru Amarasinghe's online A/L and O/L ICT tuition classes in Sri Lanka.", '/refund-policy');
 
-const LAST_UPDATED = "November 2026";
+const LAST_UPDATED = "3 November 2026";
 
 const SECTIONS = [
   { id: "eligible", title: "1. You CAN get a refund if" },
@@ -58,6 +58,11 @@ export default function RefundPolicyPage() {
       </PolicySection>
 
       <PolicySection id="not-eligible" title="2. Refunds are NOT available if">
+        <p>
+          The restrictions below apply to change-of-mind cancellation requests.
+          Duplicate charges, failure to provide paid access due to a fault on our
+          side, and any rights under applicable consumer law are assessed separately.
+        </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             You&apos;ve already viewed, downloaded, or attended any paid content
@@ -70,7 +75,7 @@ export default function RefundPolicyPage() {
           </li>
           <li>
             More than{" "}
-            <span className="font-semibold text-slate-800">14 days</span> have
+            <span className="font-semibold text-slate-800">3 days</span> have
             passed since payment;
           </li>
           <li>The uploaded bank slip is invalid or altered.</li>
@@ -88,9 +93,10 @@ export default function RefundPolicyPage() {
           </a>{" "}
           with your name, registered email/phone, payment date, and your OnePay
           reference or bank slip. We&apos;ll kindly review and respond within{" "}
-          <span className="font-semibold text-slate-800">5 working days</span>.
+          <span className="font-semibold text-slate-800">3 working days</span>.
           Approved refunds go back via your original payment method and may take
-          up to 14 working days depending on OnePay or your bank.
+          up to 14 working days depending on OnePay or your bank. This settlement
+          timeframe is separate from the 3-day cancellation request window.
         </p>
       </PolicySection>
 

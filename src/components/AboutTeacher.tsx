@@ -18,7 +18,7 @@ export function AboutTeacher() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1340px] flex-col items-center px-6 pb-24 xl:items-stretch">
         <SectionHeader
           animation="/animations/aboutteacher.tgs"
-          className="mb-0 w-full sm:mb-8 xl:mb-10"
+          className="mb-8 w-full xl:mb-10"
           badge="About the Teacher"
           heading="ගුරුවරයා පිළිබඳ.."
           subtitle={
@@ -34,7 +34,7 @@ export function AboutTeacher() {
           }
         />
 
-        <div className="flex w-full flex-col items-center gap-0 sm:gap-8 xl:flex-row xl:items-center xl:gap-2">
+        <div className="flex w-full flex-col items-center gap-8 xl:flex-row xl:items-center xl:gap-2">
           <motion.div
             className="relative flex w-full items-center justify-center xl:w-[36%] xl:justify-end"
             initial={{ opacity: 0, y: 40 }}
@@ -67,26 +67,34 @@ export function AboutTeacher() {
                 AMARASINGHE
               </span>
             </div>
-            <motion.img
-              ref={imgRef}
-              src="/images/sayuru-amarasinghe-original.webp"
-              srcSet="/images/sayuru-amarasinghe-original-480.webp 480w, /images/sayuru-amarasinghe-original-768.webp 768w, /images/sayuru-amarasinghe-original.webp 1200w"
-              sizes="(min-width: 1280px) 400px, (min-width: 640px) 380px, calc(100vw - 48px)"
-              alt="Sayuru Amarasinghe"
-              width={1200}
-              height={1800}
-              loading="lazy"
-              decoding="async"
-              className="relative z-10 w-auto max-w-full rounded-3xl select-none object-cover shadow-xl shadow-blue-900/10"
-              style={{ height: "clamp(320px, 62vh, 700px)" }}
+            <motion.picture
+              className="relative z-10 block w-full max-w-[400px]"
               animate={inView ? { y: [0, -10, 0] } : { y: 0 }}
               transition={{
                 duration: 6,
                 repeat: inView ? Infinity : 0,
                 ease: "easeInOut",
               }}
-              draggable={false}
-            />
+            >
+              <source
+                type="image/avif"
+                srcSet="/images/sayuru-amarasinghe-profile-480.avif 480w, /images/sayuru-amarasinghe-profile-768.avif 768w, /images/sayuru-amarasinghe-profile.avif 1071w"
+                sizes="(min-width: 448px) 400px, calc(100vw - 48px)"
+              />
+              <img
+                ref={imgRef}
+                src={SITE.profilePortrait}
+                srcSet="/images/sayuru-amarasinghe-profile-480.webp 480w, /images/sayuru-amarasinghe-profile-768.webp 768w, /images/sayuru-amarasinghe-profile.webp 1071w"
+                sizes="(min-width: 448px) 400px, calc(100vw - 48px)"
+                alt="Sayuru Amarasinghe in his graduation cap and gown"
+                width={1071}
+                height={1071}
+                loading="lazy"
+                decoding="async"
+                className="block aspect-square h-auto w-full rounded-3xl select-none object-contain shadow-xl shadow-blue-900/10"
+                draggable={false}
+              />
+            </motion.picture>
           </motion.div>
 
           <motion.div

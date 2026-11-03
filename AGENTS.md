@@ -23,6 +23,7 @@ Preserve these decisions unless the user explicitly changes them:
 - The student results section and its navigation links stay removed. `Results.tsx` and `public/results/results.json` remain unused source/data; do not reintroduce them or delete them as incidental cleanup.
 - The class cards are ordered: O/L 20 Day Plan, 2027 A/L, 2028 A/L, general O/L. The 2026 A/L card and published A/L schedules were removed at the owner's request. Regular A/L and O/L cards use WhatsApp timetable enquiries.
 - The O/L 20 Day Plan details come from the owner's poster: 20 days, Rs. 3,000 total fee, 8 short notes, special theory sessions and 5 years of past-paper practice. Keep these in `src/lib/programmes.ts`. Do not invent a starting date, timetable, payment method, guaranteed grade, or physical materials delivery.
+- Owner-approved copy uses LMS for recording access and System for payments. Payment verification is stated as within 2 days. The refund policy uses a 3-day change-of-mind cancellation window and a 3-working-day review target; bank/provider settlement timing and mandatory consumer rights remain separate.
 - Preserve approved Sinhala/English copy, counts, schedules, legal terms and marketing claims when the task does not authorize changing them. Report inconsistencies instead of silently rewriting owner decisions.
 - Use plain punctuation in new user-facing writing. Avoid en dashes and em dashes.
 
@@ -35,7 +36,7 @@ Read `src/lib/site.ts` for current public values. At the time of writing:
 - **(Reading)** MSc in IT & Cyber Security (UK), not a completed MSc.
 - CEO at Codezela Technologies.
 - `contact@sayuru.me`, `071 288 3835`, Facebook `ict.sayuru.me`.
-- Prepared WhatsApp enquiries and contact/feedback email drafts use `SITE.messageGreeting` ("Hi Mr. Sayuru,"). The login preview notice also addresses Mr. Sayuru. Keep the public name, branding, titles and metadata as Sayuru Amarasinghe.
+- Prepared WhatsApp enquiries and feedback email drafts use `SITE.messageGreeting` ("Hi Mr. Sayuru,"). The login preview notice also addresses Mr. Sayuru. Keep the public name, branding, titles and metadata as Sayuru Amarasinghe.
 
 Do not substitute the previous template teacher's identity, degree, achievements, contacts, domain or backend. Identity edits must consider `site.ts`, `seo.ts`, relevant page copy, assets and the manifest together; not every string is centralized yet.
 
@@ -43,7 +44,7 @@ Do not substitute the previous template teacher's identity, degree, achievements
 
 The landing site is implemented. The full student learning platform is not.
 
-- Registration uses WhatsApp links. Contact and feedback forms open prepared `mailto:` drafts.
+- Registration and FAQ support use WhatsApp links. The FAQ contact form and its draft-generation code were removed at the owner's request. Keep the FAQ accordion centered and wide. The separate feedback form opens a prepared `mailto:` draft.
 - Form state such as "submitted" does not prove an email was sent or delivered. Do not claim message storage or delivery without a real implementation and evidence.
 - `MacbookTerminal` automatically types configured commands and outputs. It is not an interactive shell, backend terminal or code execution service. Sound is disabled by the teacher section.
 - Login shows a preview notification when no API origin is configured.
@@ -93,7 +94,7 @@ ESLint runs through the CLI with zero warnings allowed. Production builds must r
 | Teacher | `AboutTeacher.tsx`, `ui/macbook-terminal.tsx`: original photo and animated profile |
 | Classes | `ClassLocations.tsx`, `lib/programmes.ts`: O/L 20 Day Plan popup and regular A/L/O/L WhatsApp enquiries |
 | Reviews | `Testimonials.tsx`, `public/comments/comments.json`: local review fetch and marquees |
-| Contact | `Faqs.tsx`, `FeedbackSection.tsx`: FAQ state and email-draft forms |
+| FAQs / feedback | `Faqs.tsx`: wide FAQ accordion and WhatsApp support; `FeedbackSection.tsx`: separate feedback email draft |
 | Shared navigation | `Navbar.tsx`, `Footer.tsx`: links, active sections, mobile menu and install UI |
 | Shared UI | `components/ui/`: Radix dialogs, animated section headers and terminal presentation |
 | Policies | `/privacy-policy`, `/refund-policy`, `/terms-and-conditions` and `PolicyLayout.tsx`: content, contact details and English main content |
@@ -116,7 +117,8 @@ The root page is a server entry; the landing composition and interactive section
 
 ### Photos, assets and screenshots
 
-- `public/images/sayuru-amarasinghe-original.webp` preserves the supplied graduation photograph and setting. The transparent hero portrait is a generated derivative.
+- About uses the owner-supplied square `sayuru-amarasinghe-profile` photograph with 480, 768 and 1071 pixel AVIF/WebP variants. Preserve the full square composition and do not upscale beyond the source. `SITE.profilePortrait` also supplies the person metadata and sitemap image.
+- `public/images/sayuru-amarasinghe-original.webp` preserves the earlier supplied graduation photograph and setting. The transparent hero portrait is a generated derivative of that earlier photo.
 - Preserve Sayuru's face, age, expression, skin tone and likeness when editing or generating imagery. Inspect the result. Do not assert that a generated portrait is pixel-identical to its reference.
 - Keep AVIF/WebP `srcSet`, `sizes`, intrinsic dimensions and the hero preload consistent when changing portrait assets.
 - Preserve the SA monogram, app icons, local fonts, font licenses, TGS illustrations and player unless the task changes them. Do not hotlink replacement assets or remove runtime-critical files as cleanup.
