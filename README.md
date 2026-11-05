@@ -37,11 +37,22 @@ A responsive, bilingual ICT tuition website with A/L and O/L programmes, online 
 
 ## Screenshots
 
-Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes, student reviews, FAQs and campaign promotion updated on **3 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
+Real browser captures of the local production build, refreshed on **1 November 2026**, with the homepage, teacher profile, online classes, student reviews, FAQs and campaign promotion updated on **3 November 2026**. Programme detail page captures were added on **5 November 2026**. Documentation images live in [`docs/screenshots/`](docs/screenshots/); the separate `public/screenshots/` images are used by the web manifest.
 
 ### A/L and O/L programmes
 
 ![Separate Advanced Level and Ordinary Level ICT programme cards](docs/screenshots/programmes.png)
+
+### Searchable programme pages
+
+![Dedicated O/L ICT 20 Day Plan page with programme facts and registration](docs/screenshots/seo-programme-page.png)
+
+<details>
+<summary><strong>Mobile A/L ICT detail page</strong></summary>
+
+<img src="docs/screenshots/seo-mobile-class.png" alt="A/L ICT details on a 390 pixel mobile viewport" width="300" />
+
+</details>
 
 ### Mobile experience
 
@@ -217,21 +228,25 @@ ict-with-sayuru/
 | Route | Responsibility |
 | --- | --- |
 | `/` | Server entry injects homepage JSON-LD, then renders the client landing-page composition |
+| `/al-ict` | Online A/L ICT details for 2027/2028, questions and class enquiries |
+| `/ol-ict` | O/L ICT options, revision guidance and class enquiries |
+| `/ol-20-day-plan` | Full plan details, confirmed price, inclusions and campaign registration |
+| `/about-sayuru-amarasinghe` | Teacher background, qualifications, programmes and contact information |
 | `/privacy-policy` | English privacy policy with its own metadata and breadcrumbs |
 | `/refund-policy` | English refund content with its own metadata and breadcrumbs |
 | `/terms-and-conditions` | Enrolment, programme fees, access, materials, conduct and consumer rights |
 | `/auth/callback` | Optional backend OAuth code exchange; marked `noindex` |
-| `/sitemap.xml` | Four public routes and homepage image references |
+| `/sitemap.xml` | Eight public routes and homepage image references |
 | `/robots.txt` | Crawl rules and the public sitemap location |
 
-`src/app/layout.tsx` supplies self-hosted fonts, resource hints, site-wide structured data, authentication context, toasts and the campaign promotion on public pages. `HomePage.tsx` orders the landing sections and owns the Lenis root. Shared dialog, section-header and terminal components live in `src/components/ui/`.
+`src/app/layout.tsx` supplies self-hosted fonts, the shared font resource hint, site-wide structured data, authentication context, toasts and the campaign promotion on public pages. `HomePage.tsx` orders the landing sections and owns the Lenis root. Homepage image preloads live in `src/app/page.tsx`. `LearningPage.tsx` renders the four detail pages on the server from `lib/learning-pages.ts`. Shared dialog, section-header and terminal components live in `src/components/ui/`.
 
 ### Where to make common changes
 
 | Change | Start here |
 | --- | --- |
 | Name, qualifications, email, phone or Facebook | `src/lib/site.ts`, then check page-specific copy and metadata |
-| Hero portrait or responsive image sizing | `Hero.tsx` and matching preload hints in `app/layout.tsx` |
+| Hero portrait or responsive image sizing | `Hero.tsx` and matching preload hints in `app/page.tsx` |
 | A/L and O/L programme cards | `Features.tsx`; keep matching course data in `lib/seo.ts` |
 | Class enquiries and O/L 20 Day Plan | `ClassLocations.tsx`, `lib/programmes.ts` |
 | Timed campaign promotion | `ProgrammePromotion.tsx`, mounted in the root layout on public routes; reset `sayuru:20-day-plan-promotion:v1` in session storage to preview again |
@@ -257,12 +272,15 @@ ict-with-sayuru/
 
 ## SEO and discovery
 
-- Bilingual homepage title/description and distinct metadata for policy routes.
+See the [search visibility plan](docs/SEO.md) for query targets, the dated live baseline, owner-approved tradeoffs, publication checks and Search Console measurement.
+
+- Bilingual homepage metadata and unique metadata for programme, teacher and policy pages.
+- Four server-rendered detail pages, crawlable homepage/footer links and programme-specific questions.
 - Canonical URLs, Open Graph and Twitter previews based on the configured public origin.
 - Metadata emitted in the initial HTML head through `htmlLimitedBots` configuration.
 - Site-wide `EducationalOrganization`, `Person` and `WebSite` data, plus two homepage `Course` entries.
 - The ongoing MSc appears in the profile description, not as an awarded credential.
-- Legal page breadcrumbs, a public sitemap with image URLs and crawler-readable auth `noindex` tags.
+- Programme, profile and legal breadcrumbs, a public sitemap with image URLs and crawler-readable auth `noindex` tags.
 - No fabricated review/rating markup, fake language-version URLs or FAQ rich-result promises.
 
 Update the sitemap's content date when the corresponding public page content changes, not on every build. A documentation-only update does not change the site's publication date.
@@ -274,7 +292,7 @@ After deployment, verify ownership in Google Search Console and optionally Bing 
 
 See Google's [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [structured-data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [course-list requirements](https://developers.google.com/search/docs/appearance/structured-data/course), [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) and [documentation updates](https://developers.google.com/search/updates).
 
-The site describes two courses. This does not establish eligibility for Google's course-list carousel, whose requirements include at least three courses. There is no promise of a particular search position or rich result.
+The homepage describes A/L and O/L courses, and the three course detail pages describe their relevant programmes, including the separate 20 Day Plan. The implementation does not add a course-list carousel or promise a particular search position or rich result.
 
 Historical Lighthouse 13.5 mobile results from **27 October 2026**: SEO 100, accessibility 100, best practices 100, performance 81. FCP was 2.1 s, LCP 4.3 s, CLS 0 and total blocking time 70 ms. These remain dated local measurements, not live-user Core Web Vitals or a new audit for every commit.
 
@@ -303,6 +321,8 @@ Push the intended commit to GitHub, then import **`sayuru-akash/ict-with-sayuru`
 A local commit, a Git push, a successful build and a verified live deployment are separate outcomes. Writing documentation does not connect Vercel, change DNS or publish the site.
 
 ## Verification and current limits
+
+**SEO verification, 5 November 2026:** lint, type checking, production build and the expanded eight-route HTTP SEO gate passed. Playwright verified the four detail pages at 320, 390, 768 and 1440 pixels, working navigation, native questions, image loading and preserved automatic promotion. Content and questions also worked without JavaScript. Lighthouse 13.6 mobile lab scores were SEO/accessibility/best practices 100 on both the homepage and O/L page; performance was 87 and 100 respectively. Homepage simulated LCP was 4.1 s, so a passing SEO score must not be presented as passing field Core Web Vitals. See [the full evidence and remaining steps](docs/SEO.md).
 
 **Campaign verification, 3 November 2026:** lint, TypeScript, production build and SEO checks passed for all four public pages. Browser checks covered delayed opening, session persistence, manual reopening, generated-image loading, dialog deferral and the campaign link at desktop and mobile sizes down to 320 pixels. Link activation was intercepted locally; no WhatsApp message was sent. The production audit reported zero findings; the full audit retained 14 moderate development-tooling advisories.
 

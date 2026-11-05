@@ -1,5 +1,6 @@
 "use client";
 
+import { PUBLIC_PATHS } from "@/lib/routes";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, BookOpen, CalendarDays, MessageCircle, Sparkles } from "lucide-react";
@@ -8,12 +9,12 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } 
 
 const SESSION_KEY = "sayuru:20-day-plan-promotion:v1";
 const OPEN_DELAY_MS = 4000;
-const PUBLIC_PATHS = new Set(["/", "/privacy-policy", "/refund-policy", "/terms-and-conditions"]);
+const PUBLIC_ROUTES = new Set<string>(PUBLIC_PATHS);
 
 export function ProgrammePromotion() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isPublic = PUBLIC_PATHS.has(pathname);
+  const isPublic = PUBLIC_ROUTES.has(pathname);
 
   function changeOpen(nextOpen: boolean) {
     if (nextOpen) {

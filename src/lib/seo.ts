@@ -1,9 +1,10 @@
+import type { LearningPage } from "@/lib/learning-pages";
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { OL_TWENTY_DAY_PLAN as PLAN } from "@/lib/programmes";
 
-export const HOME_TITLE = "Sayuru Amarasinghe | A/L & O/L ICT Online පන්ති";
-export const HOME_DESCRIPTION = "Online A/L සහ O/L ICT පන්ති සයුරු අමරසිංහ සමඟ. Theory, revision සහ past papers ඉගෙනගන්න. Join Sayuru Amarasinghe's online ICT classes in Sri Lanka.";
+export const HOME_TITLE = "ICT Classes Sri Lanka | Sayuru Amarasinghe | A/L & O/L පන්ති";
+export const HOME_DESCRIPTION = "Sri Lanka පුරා A/L සහ O/L ICT online පන්ති සයුරු අමරසිංහ සමඟ. 2027/2028 A/L, O/L සහ 20 Day Plan. Explore classes, theory, revision and past-paper practice.";
 const SOCIAL_IMAGE = "/images/sayuru-amarasinghe-social.webp";
 
 export function pageMetadata(title: string, description: string, path: string, locale = "en_LK"): Metadata {
@@ -11,7 +12,7 @@ export function pageMetadata(title: string, description: string, path: string, l
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: url, languages: {} },
+    alternates: { canonical: url },
     openGraph: {
       type: "website", locale, siteName: SITE.name, url, title, description,
       images: [{ url: SOCIAL_IMAGE, width: 1200, height: 630, alt: "Sayuru Amarasinghe, online A/L and O/L ICT classes in Sri Lanka" }],
@@ -25,7 +26,7 @@ export const ROOT_METADATA: Metadata = {
   ...pageMetadata(HOME_TITLE, HOME_DESCRIPTION, "/", "si_LK"),
   applicationName: SITE.shortName,
   category: "education",
-  authors: [{ name: SITE.name, url: `${SITE.url}/#about-teacher` }],
+  authors: [{ name: SITE.name, url: `${SITE.url}/about-sayuru-amarasinghe` }],
   creator: SITE.name,
   publisher: SITE.name,
   robots: {
@@ -76,7 +77,7 @@ export const SITE_JSON_LD = {
       name: SITE.name, alternateName: "සයුරු අමරසිංහ",
       jobTitle: ["ICT Lecturer", "CEO at Codezela Technologies"],
       image: `${SITE.url}${SITE.profilePortrait}`,
-      url: `${SITE.url}/#about-teacher`,
+      url: `${SITE.url}/about-sayuru-amarasinghe`,
       description: `${SITE.qualifications.join(". ")}. ${SITE.role}.`,
       hasCredential: { "@type": "EducationalOccupationalCredential", name: SITE.qualifications[0], credentialCategory: "degree" },
       knowsAbout: ["Information and Communication Technology", "Software Engineering", "Cyber Security"],
@@ -85,7 +86,7 @@ export const SITE_JSON_LD = {
     },
     {
       "@type": "WebSite", "@id": websiteId,
-      name: SITE.name, alternateName: SITE.shortName, url: `${SITE.url}/`,
+      name: SITE.shortName, alternateName: [SITE.name, "සයුරු ICT"], url: `${SITE.url}/`,
       description: HOME_DESCRIPTION, publisher: { "@id": organizationId }, inLanguage: ["si-LK", "en-LK"],
     },
   ],
@@ -100,13 +101,13 @@ export const HOME_JSON_LD = {
       isPartOf: { "@id": websiteId }, about: { "@id": personId },
       inLanguage: ["si-LK", "en-LK"],
       primaryImageOfPage: { "@type": "ImageObject", url: `${SITE.url}${SOCIAL_IMAGE}`, width: 1200, height: 630 },
-      mainEntity: [{ "@id": `${SITE.url}/#al-ict` }, { "@id": `${SITE.url}/#ol-ict` }],
+      mainEntity: [{ "@id": `${SITE.url}/al-ict#course` }, { "@id": `${SITE.url}/ol-ict#course` }],
     },
     ...[
       { id: "al-ict", name: "G.C.E. A/L ICT Online Classes", level: "G.C.E. Advanced Level", description: "Online A/L ICT theory, revision and past-paper classes with Sayuru Amarasinghe for 2027 and 2028 students in Sri Lanka. Enquire about the timetable." },
       { id: "ol-ict", name: "G.C.E. O/L ICT Online Classes", level: "G.C.E. Ordinary Level", description: `Online O/L ICT classes with Sayuru Amarasinghe, including the ${PLAN.durationDays} Day Plan with ${PLAN.shortNotes} short notes, special theory sessions and ${PLAN.pastPaperYears} years of past-paper practice. Full 20 Day Plan fee: Rs. ${PLAN.fee.toLocaleString("en-LK")}.` },
     ].map(course => ({
-      "@type": "Course", "@id": `${SITE.url}/#${course.id}`, url: `${SITE.url}/#${course.id}`,
+      "@type": "Course", "@id": `${SITE.url}/${course.id}#course`, url: `${SITE.url}/${course.id}`,
       name: course.name, description: course.description, educationalLevel: course.level,
       teaches: "Information and Communication Technology",
       provider: { "@id": organizationId }, inLanguage: ["si-LK", "en-LK"],
@@ -128,5 +129,41 @@ export function legalPageJsonLd(title: string, path: string) {
         { "@type": "ListItem", position: 2, name: title, item: `${SITE.url}${path}` },
       ],
     },
+  };
+}
+
+
+export function learningPageJsonLd(page: LearningPage) {
+  const url = `${SITE.url}${page.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": page.isProfile ? "AboutPage" : "WebPage",
+        "@id": `${url}#webpage`, url, name: page.title, description: page.description,
+        inLanguage: ["en-LK", "si-LK"], isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        mainEntity: { "@id": page.isProfile ? personId : `${url}#course` },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+          { "@type": "ListItem", position: 2, name: page.label, item: url },
+        ],
+      },
+      ...(page.isProfile ? [] : [{
+        "@type": "Course", "@id": `${url}#course`, url,
+        name: page.isPlan ? PLAN.name : `G.C.E. ${page.path === "/al-ict" ? "A/L" : "O/L"} ICT Online Classes`,
+        description: page.intro, educationalLevel: page.level,
+        teaches: "Information and Communication Technology",
+        provider: { "@id": organizationId }, inLanguage: ["si-LK", "en-LK"],
+        hasCourseInstance: {
+          "@type": "CourseInstance", courseMode: "online", instructor: { "@id": personId },
+        },
+        ...(page.isPlan ? { offers: { "@type": "Offer", price: PLAN.fee, priceCurrency: "LKR", url: PLAN.registrationUrl } } : {}),
+      }]),
+    ],
   };
 }

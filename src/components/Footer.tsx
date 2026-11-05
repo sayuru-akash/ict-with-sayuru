@@ -3,6 +3,7 @@
 import { SITE } from "@/lib/site";
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Download, Share, SquarePlus } from "lucide-react";
 import {
   Dialog,
@@ -146,7 +147,10 @@ export function InstallAppButton({ className }: { className?: string }) {
 
 const FOOTER_NAVIGATION = [
   { href: "#programmes", label: "A/L & O/L Programmes" },
-  { href: "#about-teacher", label: "About" },
+  { href: "/al-ict", label: "A/L ICT Classes" },
+  { href: "/ol-ict", label: "O/L ICT Classes" },
+  { href: "/ol-20-day-plan", label: "20 Day F to A Plan" },
+  { href: "/about-sayuru-amarasinghe", label: "About Sayuru Amarasinghe" },
   { href: "#testimonials", label: "Reviews" },
   { href: "#faqs", label: "FAQs" },
   { href: "/privacy-policy", label: "Privacy Policy" },
@@ -176,6 +180,7 @@ function FooterColumnHeading({ children }: { children: React.ReactNode }) {
 
 function FooterLinkItem({ href, label }: { href: string; label: string }) {
   const handleHashClick = useSmoothHashClick();
+  const pathname = usePathname();
   const isExternal = href.startsWith("http");
   const isRoute = href.startsWith("/");
   const linkClass =
@@ -195,7 +200,7 @@ function FooterLinkItem({ href, label }: { href: string; label: string }) {
   return (
     <li>
       <a
-        href={href}
+        href={href.startsWith("#") && pathname !== "/" ? `/${href}` : href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noreferrer" : undefined}
         onClick={isExternal ? undefined : (e) => handleHashClick(e, href)}

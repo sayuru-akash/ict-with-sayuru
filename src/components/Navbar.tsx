@@ -36,6 +36,7 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const handleHashClick = useSmoothHashClick();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeId, setActiveId] = useState("");
@@ -143,10 +144,10 @@ export function Navbar() {
       >
         <Link
           href="/"
-          aria-label="Sayuru Amarasinghe home"
           onClick={() => setMobileMenuOpen(false)}
           className="relative z-10 flex flex-shrink-0 items-center gap-2 rounded-full pl-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
         >
+          <span className="sr-only">Home</span>
           <img
             src="/logos/sayuru-mark.svg"
             alt=""
@@ -196,7 +197,7 @@ export function Navbar() {
                 ref={(el) => {
                   linkRefs.current[idx] = el;
                 }}
-                href={href}
+                href={pathname === "/" ? href : `/${href}`}
                 onClick={(e) => handleHashClick(e, href)}
                 className={`relative z-10 select-none rounded-full px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 ${
                   activeId === href.slice(1)
@@ -246,7 +247,7 @@ export function Navbar() {
           {NAV_ITEMS.map(({ href, label }) => (
             <a
               key={href}
-              href={href}
+              href={pathname === "/" ? href : `/${href}`}
               className={`block rounded-xl px-4 py-2.5 text-[13px] font-medium transition-all duration-150 ${
                 activeId === href.slice(1)
                   ? "bg-blue-50 text-slate-900"

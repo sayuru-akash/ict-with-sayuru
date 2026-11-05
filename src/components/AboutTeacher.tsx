@@ -1,6 +1,7 @@
 "use client";
 
 import { SITE } from "@/lib/site";
+import Link from "next/link";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -34,6 +35,7 @@ export function AboutTeacher() {
           }
         />
 
+        <div className="mb-8 text-center"><Link href="/about-sayuru-amarasinghe" className="text-sm font-semibold text-blue-700 underline decoration-blue-200 underline-offset-4 hover:text-blue-500">Read Sayuru Amarasinghe’s teacher profile</Link></div>
         <div className="flex w-full flex-col items-center gap-8 xl:flex-row xl:items-center xl:gap-2">
           <motion.div
             className="relative flex w-full items-center justify-center xl:w-[36%] xl:justify-end"

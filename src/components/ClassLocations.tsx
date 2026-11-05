@@ -73,7 +73,7 @@ function TwentyDayPlanModal() {
           <a href={PLAN.registrationUrl} target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-blue-700 transition-colors hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <MessageCircle className="h-4 w-4" aria-hidden="true" />Register on WhatsApp<ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <p className="mt-2 text-center text-xs text-blue-100">{SITE.phone}</p>
+          <p className="mt-2 text-center text-xs text-white">{SITE.phone}</p>
         </div>
         <p className="text-center text-xs leading-relaxed text-slate-500">Ask on WhatsApp for the starting date, class timetable and how to join.</p>
       </DialogContent>
@@ -85,13 +85,13 @@ function TwentyDayPlanCard() {
   return (
     <article id={PLAN.id} className="relative flex scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-blue-700 bg-blue-600 p-6 text-white">
       <CalendarDays className="pointer-events-none absolute -right-5 top-12 h-32 w-32 -rotate-12 text-white/[0.07]" aria-hidden="true" />
-      <span className="relative w-fit rounded-xl border border-white/25 bg-white/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide">O/L ICT · 20 Day Plan</span>
+      <span className="relative w-fit rounded-xl border border-white/25 bg-blue-800/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide">O/L ICT · 20 Day Plan</span>
       <h3 className="relative mt-4 text-base font-bold">{PLAN.name}</h3>
-      <p lang="si" className="relative mt-1.5 text-xs text-blue-100">සාමාන්‍ය පෙළ · මුළු දිවයිනටම</p>
+      <p lang="si" className="relative mt-1.5 text-xs text-white">සාමාන්‍ය පෙළ · මුළු දිවයිනටම</p>
       <p className="relative mt-4 text-sm leading-relaxed text-blue-50">{PLAN.durationDays} days, {PLAN.shortNotes} short notes and focused theory &amp; past-paper practice.</p>
       <div className="relative mt-4 mb-5 flex items-baseline gap-2">
         <span className="text-2xl font-extrabold tracking-tight">{PLAN_FEE}</span>
-        <span className="text-xs text-blue-100">full programme</span>
+        <span className="text-xs text-white">full programme</span>
       </div>
       <TwentyDayPlanModal />
     </article>

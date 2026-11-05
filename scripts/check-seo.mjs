@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 
 const base = (process.argv[2] || "http://127.0.0.1:3000").replace(/\/+$/, "");
 const origin = (process.env.NEXT_PUBLIC_SITE_URL || "https://ict.sayuru.me").replace(/\/+$/, "");
-const routes = ["/", "/privacy-policy", "/refund-policy", "/terms-and-conditions"];
+const learningRoutes = ["/al-ict", "/ol-ict", "/ol-20-day-plan", "/about-sayuru-amarasinghe"];
+const routes = ["/", ...learningRoutes, "/privacy-policy", "/refund-policy", "/terms-and-conditions"];
 const decode = value => value.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"');
 const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, decode(value)]));
 const titles = new Set();
@@ -53,10 +54,36 @@ for (const route of routes) {
     assert(!classSection.includes("2026 A/L") && !classSection.includes("View Class"), "Retired A/L card and schedule controls must stay absent");
     assert(classSection.includes("Rs. 3,000"), "20 Day Plan must show the owner-supplied total fee");
     assert(!html.includes('id="results"') && !html.includes('href="#results"'), "Removed results section must stay absent");
+    for (const path of learningRoutes) assert(html.includes(`href="${path}"`), `Homepage must link to ${path}`);
+    assert(/A\/L.*O\/L/.test(title) && /ICT.*Sri Lanka/.test(title), "Homepage title must describe the exam levels and country");
+  } else if (learningRoutes.includes(route)) {
+    assert.equal(courses.length, route === "/about-sayuru-amarasinghe" ? 0 : 1, `${route}: only the relevant course belongs on its detail page`);
+    assert(nodes.some(node => node["@type"] === "BreadcrumbList" && node.itemListElement?.length === 2));
+    assert(html.includes('id="main-content" lang="en-LK"'), `${route}: primary language must be declared`);
+    assert(!head.includes("/images/hero/hero-shape"), `${route}: homepage-only preloads must not leak onto detail pages`);
+    assert(html.includes('href="/#programmes"'), `${route}: cross-route section links must be crawlable without JavaScript`);
+    for (const course of courses) {
+      assert.equal(course.url, `${origin}${route}`);
+      assert.equal(course["@id"], `${origin}${route}#course`);
+      assert(!course.hasCourseInstance.courseWorkload, "Programme calendar length must not be presented as study workload");
+    }
+    if (route === "/ol-20-day-plan") {
+      assert.equal(courses[0].offers.price, 3000);
+      assert.equal(courses[0].offers.priceCurrency, "LKR");
+      assert.equal(courses[0].offers.url, "https://wa.link/1qdj47");
+      assert(html.includes("8 short notes") && html.includes("5 years"), "Plan must include the owner-supplied study materials");
+    } else {
+      assert(courses.every(course => !course.offers), `${route}: don't invent fees for regular classes`);
+    }
+    if (route === "/about-sayuru-amarasinghe") assert(nodes.some(node => node["@type"] === "AboutPage" && node.mainEntity?.["@id"] === `${origin}/#teacher`));
   } else {
-    assert.equal(courses.length, 0, `${route}: course markup belongs on the homepage`);
+    assert.equal(courses.length, 0, `${route}: legal pages must not contain course markup`);
     assert(nodes.some(node => node["@type"] === "WebPage" && node.breadcrumb?.itemListElement?.length === 2));
   }
+  const person = nodes.find(node => node["@type"] === "Person");
+  assert.equal(person.url, `${origin}/about-sayuru-amarasinghe`);
+  assert(!JSON.stringify(person.hasCredential).includes("MSc"), "Ongoing MSc must not be an awarded credential");
+  assert(!metaTags.some(tag => tag.name === "keywords"), "Avoid keyword stuffing metadata");
   console.log(`PASS ${route}: title, description, canonical, social previews, headings, identity and structured data`);
 }
 
@@ -69,3 +96,10 @@ const robots = await (await fetch(`${base}/robots.txt`)).text();
 assert(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
 assert(!robots.includes("Disallow: /auth"), "Crawlers must be able to read auth noindex");
 console.log("PASS sitemap, robots and authentication indexing rules");
+
+const missing = await fetch(`${base}/not-a-real-page-seo-check`);
+assert.equal(missing.status, 404, "Unknown URLs must return a genuine 404");
+assert((await missing.text()).includes('name="robots" content="noindex"'), "404 must be noindex");
+const withQuery = await (await fetch(`${base}/ol-ict?utm_source=seo-check`)).text();
+assert(withQuery.includes(`rel="canonical" href="${origin}/ol-ict"`), "Tracking parameters must not create a second canonical");
+console.log("PASS genuine 404/noindex and tracking-parameter canonical");

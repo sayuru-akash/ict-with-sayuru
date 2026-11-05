@@ -86,12 +86,13 @@ ESLint runs through the CLI with zero warnings allowed. Production builds must r
 | --- | --- |
 | Server homepage | `src/app/page.tsx`: inject homepage JSON-LD and render `HomePage` |
 | Landing composition | `src/components/HomePage.tsx`: section order, Lenis root and initial hash scrolling |
-| Root shell | `src/app/layout.tsx`: fonts, preloads, site schema, auth provider, toasts and the global campaign promotion |
+| Root shell | `src/app/layout.tsx`: fonts, the shared font hint, site schema, auth provider, toasts and the global campaign promotion |
 | Public identity | `src/lib/site.ts`: name, qualifications, role, contact links and origin |
 | Search metadata | `src/lib/seo.ts`, `StructuredData.tsx`: per-route metadata and escaped JSON-LD |
-| Hero | `Hero.tsx`: responsive portrait, bilingual headline, campaign registration notice and CTA scrolling to `#flow` |
-| Promotion | `ProgrammePromotion.tsx`: root-layout ad on all four public routes after 4 seconds, once per session, plus a persistent reopen button; defers while another dialog is open or a field is being edited |
+| Hero | `Hero.tsx` and `app/page.tsx`: responsive portrait and homepage-only image preloads, bilingual headline, campaign registration notice and CTA scrolling to `#flow` |
+| Promotion | `ProgrammePromotion.tsx`: root-layout ad on all eight public routes after 4 seconds, once per session, plus a persistent reopen button; defers while another dialog is open or a field is being edited |
 | Programmes / learning features | `Features.tsx`: `#programmes`, `#al-ict`, `#ol-ict` and learning cards |
+| Detail pages | `LearningPage.tsx`, `lib/learning-pages.ts`: static programme and teacher pages with visible questions and related links |
 | Teacher | `AboutTeacher.tsx`, `ui/macbook-terminal.tsx`: original photo and animated profile |
 | Classes | `ClassLocations.tsx`, `lib/programmes.ts`: O/L 20 Day Plan popup and regular A/L/O/L WhatsApp enquiries |
 | Reviews | `Testimonials.tsx`, `public/comments/comments.json`: statically imported owner-supplied reviews, pausable marquees and a read-all dialog |
@@ -131,10 +132,14 @@ The root page is a server entry; the landing composition and interactive section
 
 ### SEO and metadata
 
+- Read `docs/SEO.md` for intent mapping, confirmed facts, retained SEO tradeoffs and post-deployment checks. `lib/learning-pages.ts` owns the detail page copy; keep it server-side. The small `lib/routes.ts` path list is safe to share with the client promotion.
+- The owner reaffirmed on 5 November 2026 that the full automatic campaign ad must stay. Preserve it and its campaign URL on all public pages. Do not introduce crawler/referrer-specific hiding to claim an SEO improvement.
+- Navigation from inner pages must use actual `/#section` hrefs so it works and can be crawled without JavaScript. Preserve in-page smooth scrolling on the homepage.
+
 - Use `pageMetadata` and `SITE.url` for public route metadata. Keep titles/descriptions specific to the page and canonical/social URLs absolute.
 - Preserve initial-head metadata behavior (`htmlLimitedBots`) and JSON-LD escaping in `StructuredData.tsx`.
-- Public routes include the homepage, privacy policy, refund policy and terms and conditions. Keep all four in the sitemap and HTTP SEO checks.
-- Site-wide schema describes the organization, person and website. The two course entries belong on the homepage; legal routes have their own page/breadcrumb data.
+- Public routes include the homepage, `/al-ict`, `/ol-ict`, `/ol-20-day-plan`, `/about-sayuru-amarasinghe`, privacy policy, refund policy and terms and conditions. Keep all eight in the sitemap, `lib/routes.ts` promotion scope and HTTP SEO checks.
+- Site-wide schema describes the organization, person and website. The homepage references the A/L and O/L course entities on their dedicated pages. Each programme page describes only its own course; the teacher page uses AboutPage and the shared Person entity. Legal routes have their own page/breadcrumb data.
 - Mark the completed BSc as a credential; keep the reading MSc in descriptive text, not as an awarded degree.
 - Do not add fabricated reviews, aggregate ratings, prices, credentials, location claims or FAQ rich-result promises. Do not claim a guaranteed ranking or carousel eligibility.
 - Keep auth routes `noindex` and allow crawlers to read that directive. Preserve the sitemap declaration in robots and exclude auth/API routes from the public sitemap.

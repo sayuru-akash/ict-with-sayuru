@@ -27,32 +27,10 @@ export default function RootLayout({
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="preload" as="font" href="/fonts/Sinhala_Sangam_MN/SinhalaSangamMN-Bold.woff2" type="font/woff2" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero/hero-shape-mobile.webp"
-          media="(max-width: 1279px)"
-          fetchPriority="low"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero/hero-shape.webp"
-          media="(min-width: 1280px)"
-          fetchPriority="low"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/sayuru-amarasinghe-1024.avif"
-          type="image/avif"
-          imageSrcSet="/images/sayuru-amarasinghe-480.avif 480w, /images/sayuru-amarasinghe-768.avif 768w, /images/sayuru-amarasinghe-1024.avif 1024w"
-          imageSizes="(min-width: 1280px) 516px, (min-width: 468px) 420px, calc(100vw - 48px)"
-          fetchPriority="high"
-        />
         <StructuredData data={SITE_JSON_LD} />
       </head>
       <body>
+        <a href="#main-content" className="sr-only fixed top-3 left-3 z-[300] rounded-full bg-white px-5 py-3 font-semibold text-blue-700 shadow-lg focus:not-sr-only">Skip to main content</a>
         <AuthProvider>
           <Toaster
             position="top-center"

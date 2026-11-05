@@ -152,7 +152,6 @@ export function Hero() {
             href={PLAN.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Register for ${PLAN.campaignName} on WhatsApp`}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -170,7 +169,7 @@ export function Hero() {
             {SITE.name} <span lang="si" className="text-slate-500">· සයුරු අමරසිංහ</span>
           </p>
 
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500" lang="en">A/L &amp; O/L ICT · Online Classes</p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500" lang="en">A/L &amp; O/L ICT · Online Classes · Sri Lanka</p>
 
           <motion.h1
             initial="hidden"

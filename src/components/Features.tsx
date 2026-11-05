@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays, Check } from "lucide-react";
@@ -337,12 +338,14 @@ export function Features() {
               <h3 className="text-xl font-bold text-slate-900">{programme.name}</h3>
               <p lang="si" className="mt-1 text-lg font-medium text-blue-600">{programme.sinhala}</p>
               <p lang="en" className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">{programme.description}</p>
+              <Link href={`/${programme.id}`} className="mt-5 mr-5 inline-flex text-sm font-semibold text-blue-700 underline decoration-blue-200 underline-offset-4 hover:text-blue-500">Explore {programme.level} ICT classes</Link>
               <a href={`${SITE.whatsapp}?text=${encodeURIComponent(`${SITE.messageGreeting} I would like to know about ${programme.level} ICT online classes and the timetable.`)}`} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-500">
                 Ask about {programme.level} ICT <span aria-hidden="true">↗</span>
               </a>
             </article>
           ))}
         </section>
+        <p className="mb-6 text-sm text-slate-600">Preparing for O/L ICT? <Link href="/ol-20-day-plan" className="font-semibold text-blue-700 underline decoration-blue-200 underline-offset-4">Explore the 20 Day F to A Plan, inclusions and fee</Link>.</p>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {FEATURES_LIST.map((feature, index) => (
             <FeatureCard key={feature.title} index={index} {...feature} />
